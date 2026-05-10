@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-<!DOCTYPE html>
-<html lang="es">
 <head>
-  <!-- INÍCIO da alteração: rebranding para Listo.Aquí Media -->
+  <!-- INÍCIO da alteração: head consolidado e limpo — Listo.Aquí Media -->
 
   <!-- Charset & Viewport -->
   <meta charset="UTF-8" />
@@ -11,14 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Primário -->
-  <title>Listo.Aquí Media | Agencia de Marketing Digital y Producción Audiovisual</title>
-  <meta name="description" content="Listo.Aquí Media — agencia creativa de marketing digital, branding y producción audiovisual. Estrategia, contenido y resultados, listos aquí." />
-  <meta name="keywords" content="Listo Aquí Media, marketing digital, agencia creativa, branding, producción audiovisual, redes sociales, publicidad" />
+  <title>Listo.Aquí Media | Agencia de Marketing Digital y Producción Audiovisual en Vigo</title>
+  <meta name="description" content="Listo.Aquí Media — agencia creativa de marketing digital, branding y producción audiovisual en Vigo. Estrategia, contenido y resultados, listos aquí." />
+  <meta name="keywords" content="Listo Aquí Media, marketing digital Vigo, agencia creativa Galicia, branding, producción audiovisual, redes sociales, publicidad" />
   <meta name="author" content="Listo.Aquí Media" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://feitoaquimedia.es/" />
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Listo.Aquí Media" />
@@ -32,56 +30,79 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Listo.Aquí Media" />
-  <meta name="twitter:description" content="Agencia creativa de marketing digital y producción audiovisual." />
+  <meta name="twitter:description" content="Agencia creativa de marketing digital y producción audiovisual en Vigo." />
   <meta name="twitter:image" content="https://feitoaquimedia.es/assets/og-image.jpg" />
 
   <!-- Theme & Mobile -->
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#0A0A0F" />
   <meta name="apple-mobile-web-app-title" content="Listo.Aquí Media" />
   <meta name="application-name" content="Listo.Aquí Media" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+  <!-- Favicon (placeholder SVG inline até subir os definitivos) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Preconnect -->
+  <!-- Preconnect (performance de fontes) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Fontes -->
+  <!-- Google Fonts: Inter + Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- CSS do projeto -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD (LocalBusiness + ProfessionalService) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://feitoaquimedia.es/#business",
     "name": "Listo.Aquí Media",
+    "alternateName": "Listo Aquí Media",
     "url": "https://feitoaquimedia.es/",
     "logo": "https://feitoaquimedia.es/assets/logo.png",
-    "description": "Agencia creativa de marketing digital, branding y producción audiovisual.",
+    "image": "https://feitoaquimedia.es/assets/og-image.jpg",
+    "description": "Agencia creativa de marketing digital, branding y producción audiovisual en Vigo, Galicia.",
+    "telephone": "+34645310103",
+    "email": "hola@feitoaquimedia.es",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Vigo",
-      "addressRegion": "Galicia",
+      "addressRegion": "Pontevedra",
       "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.2406,
+      "longitude": -8.7207
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }],
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.2406,
+        "longitude": -8.7207
+      },
+      "geoRadius": "50000"
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+34692231872",
+      "telephone": "+34645310103",
+      "email": "hola@feitoaquimedia.es",
       "contactType": "customer service",
       "availableLanguage": ["Spanish", "Portuguese", "English"]
-    },
-    "sameAs": [
-      "https://www.instagram.com/listoaqui.media"
-    ]
+    }
   }
   </script>
+
+  <!-- CSS externo (sempre por último para não ser sobrescrito por nada acima) -->
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- FIM da alteração -->
 </head>
