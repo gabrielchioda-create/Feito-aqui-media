@@ -6,21 +6,27 @@
     <title>LISTO.AQUÍ MEDIA - Creadores de Contenido en Vigo</title>
     <style>
         /* ====================================================
-           RESET & VARIÁVEIS (A Base do Caos Controlado)
+           RESET & VARIÁVEIS 
            ==================================================== */
         :root {
-            --bg-color: #0a0a0a; /* Fundo Escuro Premium */
-            --text-main: #f3f4f6; /* Texto Claro */
-            --text-muted: #9ca3af; /* Texto Secundário */
-            --brand-color: #FF5722; /* Laranja Habanero (Conversão) */
+            --bg-color: #0a0a0a; 
+            --bg-card: #141414;
+            --text-main: #f3f4f6; 
+            --text-muted: #9ca3af; 
+            --brand-color: #FF5722; 
             --brand-hover: #E64A19;
+            --border-color: #27272a;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Rolagem suave ao clicar no menu */
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         body {
@@ -31,27 +37,31 @@
         }
 
         /* ====================================================
-           CABEÇALHO (Header) - Efeito Vidro
+           CABEÇALHO E NAVEGAÇÃO
            ==================================================== */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
             font-size: 1.2rem;
             font-weight: 800;
             letter-spacing: -0.5px;
+            color: white;
+            text-decoration: none;
         }
+
+        .logo span { color: var(--brand-color); }
 
         nav ul {
             display: flex;
@@ -67,26 +77,51 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--brand-color);
-        }
+        nav a:hover { color: var(--brand-color); }
 
-        /* Esconder menu em celulares para focar na conversão */
         @media (max-width: 768px) {
             nav ul { display: none; }
         }
 
         /* ====================================================
-           SEÇÃO HERO (A Máquina de Vendas)
+           ESTRUTURA DE SEÇÕES (Global)
+           ==================================================== */
+        section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* ====================================================
+           HERO SECTION (Topo)
            ==================================================== */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 120px 5% 50px;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding-top: 150px;
         }
 
         .tagline {
@@ -98,19 +133,18 @@
             margin-bottom: 25px;
             color: var(--text-muted);
             border: 1px solid rgba(255,255,255,0.1);
+            width: fit-content;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Tamanho responsivo */
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             line-height: 1.1;
             font-weight: 900;
             letter-spacing: -1px;
             margin-bottom: 20px;
         }
 
-        h1 .highlight {
-            color: var(--brand-color); /* Destacando o problema */
-        }
+        h1 .highlight { color: var(--brand-color); }
 
         .hero-desc {
             font-size: 1.2rem;
@@ -119,9 +153,6 @@
             margin-bottom: 40px;
         }
 
-        /* ====================================================
-           BOTÕES E CTAs (Call to Action)
-           ==================================================== */
         .actions {
             display: flex;
             gap: 20px;
@@ -141,7 +172,7 @@
             display: inline-block;
             transition: transform 0.2s, background 0.3s;
             box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
-            animation: pulse 2s infinite; /* Gatilho visual */
+            animation: pulse 2s infinite;
         }
 
         .btn-primary:hover {
@@ -160,20 +191,14 @@
             transition: color 0.3s;
         }
 
-        .btn-secondary:hover {
-            color: var(--brand-color);
-        }
+        .btn-secondary:hover { color: var(--brand-color); }
 
-        /* Animação de Pulso para o botão principal */
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.5); }
             70% { box-shadow: 0 0 0 15px rgba(255, 87, 34, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
         }
 
-        /* ====================================================
-           PROVAS SOCIAIS E ESCASSEZ
-           ==================================================== */
         .trust-badges {
             display: flex;
             gap: 20px;
@@ -202,51 +227,296 @@
             font-size: 0.95rem;
             border: 1px dashed var(--brand-color);
         }
+
+        /* ====================================================
+           CARDS E SEÇÕES ESPECÍFICAS
+           ==================================================== */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-color);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Pricing Especial */
+        .pack-card {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pack-card.highlight {
+            border: 2px solid var(--brand-color);
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--brand-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        ul.features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        ul.features li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-full {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px 0;
+        }
+
+        .faq-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 100px;
+        }
+        
+        .footer-content h2 { margin-bottom: 20px; }
+        
     </style>
 </head>
 <body>
 
+    <!-- CABEÇALHO -->
     <header>
-        <div class="logo">LISTO.AQUÍ MEDIA</div>
+        <a href="#" class="logo">LISTO.AQUÍ<span>.</span></a>
         <nav>
             <ul>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Packs</a></li>
-                <li><a href="#">Cómo Funciona</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#como-funciona">Cómo Funciona</a></li>
+                <li><a href="#packs">Packs</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
-        <!-- Botão sutil no menu, o foco real está no meio da tela -->
-        <a href="#" class="btn-secondary" style="font-size: 0.9rem;">Pide tu Pack</a>
+        <a href="#packs" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem; animation: none;">Pide tu Pack</a>
     </header>
 
-    <main>
-        <section class="hero">
-            <span class="tagline">🎬 Creadores de contenido para restaurantes en Vigo</span>
-            
-            <h1>Tu comida es increíble.<br>
-            <span class="highlight">El problema es que nadie lo sabe.</span></h1>
-            
-            <p class="hero-desc">Creamos el contenido que hace que la gente pare de hacer scroll, se le haga agua la boca y reserve mesa en tu restaurante. Sin que tú pierdas un solo minuto de tu cocina.</p>
-            
-            <div class="actions">
-                <a href="#" class="btn-primary">Quiero llenar mi restaurante &rarr;</a>
-                <a href="#" class="btn-secondary">Ver cómo funciona &darr;</a>
+    <!-- 1. HERO SECTION -->
+    <section class="hero" id="inicio">
+        <span class="tagline">🎬 Creadores de contenido para restaurantes en Vigo</span>
+        
+        <h1>Tu comida es increíble.<br>
+        <span class="highlight">El problema es que nadie lo sabe.</span></h1>
+        
+        <p class="hero-desc">Creamos el contenido (Reels, TikToks y Fotos) que hace que la gente pare de hacer scroll, se le haga agua la boca y reserve mesa en tu restaurante. Sin que tú pierdas un solo minuto de tu cocina.</p>
+        
+        <div class="actions">
+            <a href="#packs" class="btn-primary">Quiero llenar mi restaurante &rarr;</a>
+            <a href="#como-funciona" class="btn-secondary">Ver cómo funciona &darr;</a>
+        </div>
+
+        <div class="trust-badges">
+            <span>✅ Sin contratos de permanencia</span>
+            <span>📸 Grabamos en tu local</span>
+            <span>⚡ Entregas rápidas</span>
+        </div>
+
+        <div class="scarcity">
+            🔥 Oferta de lanzamiento · Solo para los primeros 3 restaurantes de Vigo
+        </div>
+    </section>
+
+    <!-- 2. SERVIÇOS -->
+    <section id="servicios">
+        <h2 class="section-title">Dejamos a tu competencia <span class="highlight">con hambre</span></h2>
+        <p class="section-subtitle">No hacemos fotos aburridas. Hacemos contenido diseñado 100% para conseguir reservas.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Reels y TikToks Virales</h3>
+                <p>Videos dinámicos, en tendencia y editados profesionalmente para captar la atención en los primeros 3 segundos. Mostramos la experiencia real de comer en tu local.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📸</div>
+                <h3>Fotografía Gastronómica</h3>
+                <p>Fotos que dan hambre. Iluminación profesional para que tus platos se vean exactamente igual de deliciosos en la pantalla que en la mesa.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Gestión Visual</h3>
+                <p>Te entregamos el contenido listo para publicar, con textos atractivos y hashtags optimizados para la zona de Vigo y alrededores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COMO FUNCIONA -->
+    <section id="como-funciona">
+        <h2 class="section-title">Tu restaurante lleno, <span class="highlight">sin dolores de cabeza</span></h2>
+        <p class="section-subtitle">Un proceso diseñado para no interrumpir tu servicio.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">1️⃣</div>
+                <h3>Reserva tu sesión</h3>
+                <p>Eliges el pack que mejor se adapta a ti. Agendamos un día y hora donde tu cocina esté más tranquila.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">2️⃣</div>
+                <h3>Acción (Nosotros nos encargamos)</h3>
+                <p>Vamos a tu restaurante con nuestro equipo. Grabamos, hacemos fotos y captamos la esencia del lugar en menos de 2 horas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">3️⃣</div>
+                <h3>Empieza a recibir clientes</h3>
+                <p>Te entregamos todo el material editado y optimizado. Tú solo publicas y respondes las reservas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PACKS / PREÇOS -->
+    <section id="packs">
+        <h2 class="section-title">Planes simples, <span class="highlight">resultados claros</span></h2>
+        <p class="section-subtitle">Elige el combustible que tu restaurante necesita hoy.</p>
+        
+        <div class="grid">
+            <!-- Pack 1 -->
+            <div class="card pack-card">
+                <h3>El Entrante</h3>
+                <p>Para locales que quieren probar el impacto del buen contenido.</p>
+                <div class="price">€290 <span>/mes</span></div>
+                <ul class="features">
+                    <li>✔️ 1 Sesión de grabación (1.5 hrs)</li>
+                    <li>✔️ 4 Reels / TikToks editados</li>
+                    <li>✔️ 10 Fotos en alta calidad</li>
+                    <li>✔️ Ideas y guiones incluidos</li>
+                </ul>
+                <a href="#contacto" class="btn-primary btn-full" style="animation: none;">Elegir Entrante</a>
             </div>
 
-            <div class="trust-badges">
-                <span>✅ Sin contratos largos</span>
-                <span>📸 Vamos a tu restaurante</span>
-                <span>⚡ Contenido en 48h</span>
+            <!-- Pack 2 (Destaque) -->
+            <div class="card pack-card highlight">
+                <div class="badge">EL MÁS POPULAR</div>
+                <h3>Plato Principal</h3>
+                <p>Crecimiento constante para dominar las redes en Vigo.</p>
+                <div class="price">€490 <span>/mes</span></div>
+                <ul class="features">
+                    <li>✔️ 2 Sesiones de grabación al mes</li>
+                    <li>✔️ 8 Reels / TikToks de alto impacto</li>
+                    <li>✔️ 20 Fotos en alta calidad</li>
+                    <li>✔️ Textos listos para publicar (Copywriting)</li>
+                    <li>✔️ Soporte prioritario por WhatsApp</li>
+                </ul>
+                <a href="#contacto" class="btn-primary btn-full">Quiero llenar mi local</a>
             </div>
 
-            <div class="scarcity">
-                🔥 Oferta de lanzamiento · Solo para los primeros 3 restaurantes de Vigo
+            <!-- Pack 3 -->
+            <div class="card pack-card">
+                <h3>Menú Degustación</h3>
+                <p>Delega el 100%. Nosotros gestionamos todo el contenido.</p>
+                <div class="price">A consultar</div>
+                <ul class="features">
+                    <li>✔️ Sesiones ilimitadas según necesidad</li>
+                    <li>✔️ Gestión de comunidad y respuestas</li>
+                    <li>✔️ Publicación automática</li>
+                    <li>✔️ Estrategia de anuncios (Ads)</li>
+                </ul>
+                <a href="#contacto" class="btn-primary btn-full" style="background: transparent; border: 1px solid var(--text-muted); animation: none; color: white;">Hablar por WhatsApp</a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- 5. FAQ -->
+    <section id="faq">
+        <h2 class="section-title">Preguntas <span class="highlight">Frecuentes</span></h2>
+        <p class="section-subtitle">Resolvemos tus dudas rápido, sabemos que tienes mesas que atender.</p>
+        
+        <div style="max-width: 800px; margin: 0 auto; background: var(--bg-card); padding: 40px; border-radius: 12px; border: 1px solid var(--border-color);">
+            <div class="faq-item">
+                <h4>¿Tengo que cerrar el restaurante para que graben?</h4>
+                <p>No, en absoluto. Nos adaptamos a tus horarios. Preferimos grabar en momentos de baja afluencia, pero también capturamos "el caos hermoso" de un servicio si así lo requiere la estrategia.</p>
+            </div>
+            <div class="faq-item">
+                <h4>¿Cuánto tardan en entregar los videos y fotos?</h4>
+                <p>Somos rápidos. Tendrás el primer lote de contenido editado y listo para publicar en un plazo máximo de 48 a 72 horas laborables después de la sesión de grabación.</p>
+            </div>
+            <div class="faq-item">
+                <h4>¿Hay contrato de permanencia?</h4>
+                <p>No. Creemos que te quedarás con nosotros por los resultados, no porque un papel te obligue. Pagas mes a mes y puedes cancelar cuando lo decidas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER / CONTACTO -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;">¿Listo para hacer que tu <span class="highlight">comida brille</span>?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.2rem;">Hablemos. Sin compromiso. Solo resultados.</p>
+            <a href="mailto:hola@listoaquimedia.com" class="btn-primary" style="animation: none;">Enviar un mensaje &rarr;</a>
+            
+            <p style="margin-top: 60px; color: var(--text-muted); font-size: 0.9rem;">
+                © 2026 LISTO.AQUÍ MEDIA. Creado para restaurantes de Vigo.<br>
+                Gabriel | Creador de Contenido
+            </p>
+        </div>
+    </footer>
 
 </body>
 </html>
