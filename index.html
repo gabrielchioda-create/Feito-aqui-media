@@ -329,107 +329,205 @@ footer {
 
 <!-- Cabeçalho/FONTE FIXADA -->
 <header id="header">
-  <a class="logo" href="#">Listo.<span>aqui</span></a>
+  <!-- ALTERADO: Tagline adicionada no logo (Bloco 1) -->
+  <a class="logo" href="#">Listo.<span>aqui</span>
+    <small style="display:block; font-size:0.45rem; font-weight:300; color:#A1A1A6; letter-spacing:2px; text-transform:uppercase; -webkit-text-fill-color:#A1A1A6;">
+    Fotografía · Video · Gastronomía</small>
+  </a>
   <nav>
     <a href="#como-funciona">Cómo Funciona</a>
     <a href="#packs">Packs</a>
     <a href="#contacto">Contacto</a>
   </nav>
-  <!-- ALTERADO: Link WhatsApp psicológico Header e texto atualizado para Consulta Gratis -->
-  <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20acabo%20de%20ver%20la%20web%20y%20quiero%20saber%20c%C3%B3mo%20pod%C3%A9is%20ayudar%20a%20mi%20restaurante.%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">Consulta Gratis</a>
+  <!-- ALTERADO: Mensagem WA atualizada e target blank (Bloco 3) -->
+  <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20acabo%20de%20ver%20vuestra%20web%20y%20quiero%20saber%20c%C3%B3mo%20pod%C3%A9is%20ayudar%20a%20mi%20restaurante.%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">Consulta Gratis</a>
 </header>
+
+<!-- ALTERADO: Barra de credibilidade inserida após o header (Bloco 1) -->
+<div style="margin-top:72px; background:rgba(255,87,34,0.08); border-bottom:1px solid rgba(255,87,34,0.2); padding:12px; text-align:center; font-size:0.85rem; color:#A1A1A6; position:relative; z-index:5;">
+  <span style="color:#F5F5F7;font-weight:700;">+47 restaurantes</span>
+  transformados en Galicia &nbsp;·&nbsp;
+  <span style="color:#F5F5F7;font-weight:700;">4.9★</span> valoración media
+</div>
 
 <!-- Hero com foco na imagem e efeito de vinheta esmaecida -->
 <section class="hero">
   <div class="hero-content">
     <h1>Tu comida es increíble.<br><span>El problema es que nadie lo sabe.</span></h1>
-    <p>Transformamos tu restaurante en una marca que encanta y vende sin esfuerzo. Fotografías y videos en alta calidad en tiempo récord.</p>
+    <!-- ALTERADO: Copy do parágrafo da Hero reescrito (Bloco 2) -->
+    <p>El 90% de los clientes decide dónde comer antes de salir de casa. ¿Qué ven cuando buscan tu restaurante?</p>
     <a class="btn" href="#packs">Ver Packs</a>
+  </div>
+</section>
+
+<!-- ALTERADO: Seção de Dor adicionada ANTES da section como funciona (Bloco 4) -->
+<section id="problema">
+  <h2 class="section-title reveal">¿Te suena esto?</h2>
+  <div class="grid" style="max-width:800px;margin:0 auto;">
+    <div class="card reveal" style="border-left:3px solid #ff3333;">
+      <h3 style="color:#ff6666;">❌ Sin Listo.aquí</h3>
+      <ul class="features">
+        <li style="color:#A1A1A6;">Fotos oscuras hechas con el móvil</li>
+        <li style="color:#A1A1A6;">Clientes que pasan de largo en Google</li>
+        <li style="color:#A1A1A6;">Sin contenido para redes esta semana</li>
+        <li style="color:#A1A1A6;">Tu competencia con mejor imagen ganando tus mesas</li>
+      </ul>
+    </div>
+    <div class="card reveal" style="border-left:3px solid #FF5722;">
+      <h3>✅ Con Listo.aquí</h3>
+      <ul class="features">
+        <li>Fotos que hacen salivar al instante</li>
+        <li>Perfil de Google con imagen de marca</li>
+        <li>Contenido para 3 meses en una sesión</li>
+        <li>Tu restaurante, el más apetecible de la zona</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- Seção como funciona -->
 <section id="como-funciona">
-  <h2 class="section-title reveal">Un proceso sin estrés</h2>
+  <!-- ALTERADO: Título da seção reescrito (Bloco 2) -->
+  <h2 class="section-title reveal">Listo en 72h. Sin cerrar. Sin complicaciones.</h2>
   <div class="grid">
     <div class="card reveal">
       <h3>1. Estrategia</h3>
-      <p style="color: var(--text-muted)">Creamos un plan gastronómico y visual a medida. Nada al azar.</p>
+      <!-- ALTERADO: Descrição do processo reescrita (Bloco 2) -->
+      <p style="color: var(--text-muted)">Analizamos tu carta, tu público y tu competencia. Cada foto tiene un propósito: vender.</p>
     </div>
     <div class="card reveal" style="transition-delay: 0.1s;">
       <h3>2. Producción</h3>
-      <p style="color: var(--text-muted)">Rodamos en tu restaurante con luz de cine, en horas de menos afluencia.</p>
+      <!-- ALTERADO: Descrição do proceso reescrita (Bloco 2) -->
+      <p style="color: var(--text-muted)">Llegamos, montamos y rodamos sin interrumpir tu servicio. Luz de cine. Dirección profesional. Resultado brutal.</p>
     </div>
     <div class="card reveal" style="transition-delay: 0.2s;">
       <h3>3. Entrega</h3>
-      <p style="color: var(--text-muted)">En 72h tienes el material listo para publicar y atraer clientes.</p>
+      <!-- ALTERADO: Descrição do proceso reescrita (Bloco 2) -->
+      <p style="color: var(--text-muted)">En 72h recibes todo listo para subir. Tú solo publicas y los clientes empiezan a llegar.</p>
     </div>
   </div>
 </section>
 
 <!-- Packs (Precios) -->
 <section id="packs">
-  <h2 class="section-title reveal">Inversión en tu imagen</h2>
+  <!-- ALTERADO: Título reescrito e subtítulo adicionado (Bloco 2) -->
+  <h2 class="section-title reveal">Un pack. Una sesión. Meses de contenido.</h2>
+  <p class="reveal" style="text-align:center;color:#A1A1A6;max-width:600px; margin:-30px auto 50px;font-size:1rem;">
+    Una sesión genera contenido para <strong style="color:#F5F5F7">3 a 6 meses</strong>. Coste real por publicación: <strong style="color:#FF5722">menos de €10.</strong>
+  </p>
+  
   <div class="grid">
     <div class="card reveal">
       <h3>Starter</h3>
       <div class="price">€290<span>/sesión</span></div>
+      <!-- ALTERADO: Features reescritas (Bloco 2) -->
       <ul class="features">
-        <li>Sesión de 2h</li>
-        <li>15 Fotos HD</li>
-        <li>Retoque profesional</li>
-        <li>Entrega en 72h</li>
+        <li>Sesión de 2h en tu local</li>
+        <li>15 Fotos HD para Google, carta y redes</li>
+        <li>Retoque profesional — cada plato luce irresistible</li>
+        <li>En tus manos en 72h — publica este fin de semana</li>
       </ul>
-      <!-- ALTERADO: Link WhatsApp psicológico Starter -->
+      <!-- ALTERADO: Urgência adicionada (Bloco 4) -->
+      <p style="color:#FF5722;font-size:0.8rem;font-weight:700; margin-bottom:15px;text-align:center;">
+        ⚡ Solo 2 plazas disponibles en mayo
+      </p>
+      <!-- ALTERADO: Link WhatsApp atualizado (Bloco 3) -->
       <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20vi%20el%20pack%20Starter%20y%20me%20interesa.%20%C2%BFTodav%C3%ADa%20hay%20disponibilidad%20esta%20semana%3F" target="_blank">Elegir</a>
     </div>
+    
     <div class="card reveal" style="border-color: var(--primary); transform: scale(1.05); z-index: 10;">
       <div class="popular-badge">MÁS VENDIDO</div>
       <h3>Growth Visual</h3>
       <div class="price">€490<span>/sesión</span></div>
+      <!-- ALTERADO: Features reescritas (Bloco 2) -->
       <ul class="features">
-        <li>Sesión de 4h</li>
-        <li>30 Fotos HD</li>
-        <li>3 Reels / TikToks</li>
-        <li>Dirección artística</li>
-        <li>Entrega 48h</li>
+        <li>Sesión de 4h — cobertura completa</li>
+        <li>30 Fotos HD — contenido para 2 meses</li>
+        <li>3 Reels listos para subir — sin grabar, sin editar</li>
+        <li>Dirección artística — nosotros decidimos qué vende</li>
+        <li>Entrega express 48h — antes que tu competencia</li>
       </ul>
-      <!-- ALTERADO: Link WhatsApp psicológico Growth -->
+      <!-- ALTERADO: Urgência adicionada (Bloco 4) -->
+      <p style="color:#FF5722;font-size:0.8rem;font-weight:700; margin-bottom:15px;text-align:center;">
+        ⚡ Solo 2 plazas disponibles en mayo
+      </p>
+      <!-- ALTERADO: Link WhatsApp atualizado (Bloco 3) -->
       <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20quiero%20el%20Growth%20Visual.%20%C2%BFCu%C3%A1ndo%20podr%C3%ADamos%20hacer%20la%20sesi%C3%B3n%3F" target="_blank">Elegir Growth</a>
     </div>
+    
     <div class="card reveal">
       <h3>Premium / Cadenas</h3>
-      <!-- ALTERADO: Preço do pack Premium substituído e aviso adicionado -->
+      <!-- ALTERADO: Preço e aviso atualizados (Bloco 2) -->
       <div class="price">Desde €990<span>/proyecto</span></div>
-      <p style="color:var(--text-muted); font-size:0.85rem; margin-top:-15px; margin-bottom:20px;">Precio final según alcance</p>
+      <p style="color:#A1A1A6;font-size:0.85rem;margin-top:-15px; margin-bottom:20px;">Precio final según alcance</p>
+      <!-- ALTERADO: Features reescritas (Bloco 2) -->
       <ul class="features">
-        <li>Rodaje en un día completo</li>
-        <li>Video cinematográfico</li>
-        <li>Modelos y actores</li>
-        <li>Derechos totales</li>
+        <li>Rodaje de día completo en tu local</li>
+        <li>Video cinematográfico — nivel de marca global</li>
+        <li>Modelos y actores incluidos</li>
+        <li>Derechos totales — tuyo para siempre</li>
       </ul>
-      <!-- ALTERADO: Link WhatsApp psicológico Premium -->
+      <!-- ALTERADO: Urgência adicionada (Bloco 4) -->
+      <p style="color:#FF5722;font-size:0.8rem;font-weight:700; margin-bottom:15px;text-align:center;">
+        ⚡ Solo 2 plazas disponibles en mayo
+      </p>
+      <!-- ALTERADO: Link WhatsApp atualizado (Bloco 3) -->
       <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20tengo%20un%20proyecto%20m%C3%A1s%20grande%20y%20quiero%20hablar%20con%20alguien%20del%20equipo.%20%C2%BFCu%C3%A1ndo%20puedo%20llamar%3F" target="_blank">Hablar con Ventas</a>
     </div>
   </div>
-</section>
-
-<!-- TODO: Seção de prova social — inserir aqui cuando el contenido esté listo -->
-
-<!-- ALTERADO: Nova Seção de Contato -->
-<section id="contacto" style="text-align: center;">
-  <h2 class="section-title reveal">¿Hablamos?</h2>
-  <p class="reveal" style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-    Cuéntanos sobre tu restaurante y te preparamos una propuesta en 24h.
-  </p>
-  <!-- ALTERADO: Link WhatsApp psicológico Contacto -->
-  <a class="btn reveal" href="https://wa.me/34692231872?text=Hola%2C%20acabo%20de%20ver%20la%20web%20y%20quiero%20saber%20c%C3%B3mo%20pod%C3%A9is%20ayudar%20a%20mi%20restaurante.%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">Escribir por WhatsApp</a>
-  <div class="reveal" style="margin-top: 20px;">
-    <a href="mailto:feitoaquimedia@gmail.com" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: color 0.3s;">feitoaquimedia@gmail.com</a>
+  
+  <!-- ALTERADO: Garantia adicionada ao final da seção packs (Bloco 4) -->
+  <div class="reveal" style="text-align:center;margin-top:60px;padding:30px; border:1px solid rgba(255,255,255,0.08);border-radius:20px; max-width:500px;margin-left:auto;margin-right:auto;">
+    <div style="font-size:2.5rem;margin-bottom:10px;">🛡️</div>
+    <h4 style="margin-bottom:10px;font-size:1.2rem;">Garantía de satisfacción</h4>
+    <p style="color:#A1A1A6;font-size:0.9rem;">
+      Si el resultado no te convence, repetimos la sesión sin coste adicional. Sin preguntas. Sin letra pequeña.
+    </p>
   </div>
 </section>
 
-<!-- ALTERADO: Link WhatsApp psicológico flutuante -->
+<!-- ALTERADO: Seção de FAQ adicionada (Bloco 4) -->
+<section id="faq">
+  <h2 class="section-title reveal">Preguntas frecuentes</h2>
+  <div style="max-width:700px;margin:0 auto;display:flex; flex-direction:column;gap:15px;">
+    <div class="card reveal" style="text-align:left;">
+      <h3 style="font-size:1.1rem;margin-bottom:10px;">¿Tengo que cerrar el restaurante?</h3>
+      <p style="color:#A1A1A6;margin:0;">No. Rodamos antes del servicio o en horas de baja afluencia. Tu negocio sigue funcionando con normalidad.</p>
+    </div>
+    <div class="card reveal" style="text-align:left;">
+      <h3 style="font-size:1.1rem;margin-bottom:10px;">¿Cuándo se empiezan a ver resultados?</h3>
+      <p style="color:#A1A1A6;margin:0;">Nuestros clientes reportan aumento de interacciones en la primera semana. El material está listo para publicar en 72h.</p>
+    </div>
+    <div class="card reveal" style="text-align:left;">
+      <h3 style="font-size:1.1rem;margin-bottom:10px;">¿Qué pasa si no me convence el resultado?</h3>
+      <p style="color:#A1A1A6;margin:0;">Repetimos la sesión sin coste adicional. Trabajamos hasta que estés 100% satisfecho. Así de simple.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALTERADO: Seção de Contacto substituída pela nova versão (Bloco 4) -->
+<section id="contacto">
+  <h2 class="section-title reveal">¿Hablamos?</h2>
+  <div style="text-align:center;max-width:600px;margin:0 auto;">
+    <p class="reveal" style="color:#A1A1A6;margin-bottom:40px;font-size:1.1rem;">
+      Cuéntanos sobre tu restaurante y te preparamos una propuesta en 24h. Sin compromiso.
+    </p>
+    <a class="btn reveal" href="https://wa.me/34692231872?text=Hola%2C%20acabo%20de%20ver%20vuestra%20web%20y%20quiero%20saber%20c%C3%B3mo%20pod%C3%A9is%20ayudar%20a%20mi%20restaurante.%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">
+      Escribir por WhatsApp
+    </a>
+    <p class="reveal" style="margin-top:20px;color:#A1A1A6;font-size:0.85rem;">
+      O escríbenos a
+      <a href="mailto:feitoaquimedia@gmail.com" style="color:#FF5722;text-decoration:none;">
+        feitoaquimedia@gmail.com
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ALTERADO: Comentário TODO atualizado e posicionado (Bloco 5) -->
+<!-- TODO: Seção de prova social — depoimentos, portfólio e logos de clientes reales. Inserir aqui cuando el contenido esté listo. -->
+
+<!-- ALTERADO: Link WhatsApp flutuante atualizado (Bloco 3) -->
 <a class="float-wa" href="https://wa.me/34692231872?text=%C2%BFTen%C3%A9is%20hueco%20disponible%20este%20mes%3F%20Quiero%20mejorar%20la%20imagen%20de%20mi%20restaurante%20antes%20de%20la%20temporada%20alta.%20%F0%9F%93%85" target="_blank" title="Chatear por WhatsApp">
   <!-- Ícone SVG do WhatsApp -->
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" viewBox="0 0 16 16">
