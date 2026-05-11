@@ -1,913 +1,252 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- INÍCIO da alteração: migração de domínio para listoaqui.es -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTO.AQUÍ MEDIA - Creadores de Contenido en Vigo</title>
+    <style>
+        /* ====================================================
+           RESET & VARIÁVEIS (A Base do Caos Controlado)
+           ==================================================== */
+        :root {
+            --bg-color: #0a0a0a; /* Fundo Escuro Premium */
+            --text-main: #f3f4f6; /* Texto Claro */
+            --text-muted: #9ca3af; /* Texto Secundário */
+            --brand-color: #FF5722; /* Laranja Habanero (Conversão) */
+            --brand-hover: #E64A19;
+        }
 
-  <!-- Charset & Viewport -->
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-  <!-- SEO Primário -->
-  <title>Listo.Aquí Media | Agencia de Marketing Digital y Producción Audiovisual</title>
-  <meta name="description" content="Listo.Aquí Media — agencia creativa de marketing digital, branding y producción audiovisual. Estrategia, contenido y resultados, listos aquí." />
-  <meta name="keywords" content="Listo Aquí Media, marketing digital, agencia creativa, branding, producción audiovisual, redes sociales, publicidad" />
-  <meta name="author" content="Listo.Aquí Media" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://listoaqui.es/" />
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="es_ES" />
-  <meta property="og:site_name" content="Listo.Aquí Media" />
-  <meta property="og:title" content="Listo.Aquí Media | Marketing Digital y Producción Audiovisual" />
-  <meta property="og:description" content="Estrategia, branding y contenido audiovisual de alto impacto. Tu marca, lista aquí." />
-  <meta property="og:url" content="https://listoaqui.es/" />
-  <meta property="og:image" content="https://listoaqui.es/assets/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+        /* ====================================================
+           CABEÇALHO (Header) - Efeito Vidro
+           ==================================================== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Listo.Aquí Media" />
-  <meta name="twitter:description" content="Agencia creativa de marketing digital y producción audiovisual." />
-  <meta name="twitter:image" content="https://listoaqui.es/assets/og-image.jpg" />
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
 
-  <!-- Theme & Mobile -->
-  <meta name="theme-color" content="#0a0a0a" />
-  <meta name="apple-mobile-web-app-title" content="Listo.Aquí Media" />
-  <meta name="application-name" content="Listo.Aquí Media" />
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        nav a:hover {
+            color: var(--brand-color);
+        }
 
-  <!-- Fontes -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+        /* Esconder menu em celulares para focar na conversão */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+        }
 
-  <!-- CSS do projeto -->
-  <link rel="stylesheet" href="styles.css" />
+        /* ====================================================
+           SEÇÃO HERO (A Máquina de Vendas)
+           ==================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 5% 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Listo.Aquí Media",
-    "url": "https://listoaqui.es/",
-    "logo": "https://listoaqui.es/assets/logo.png",
-    "description": "Agencia creativa de marketing digital, branding y producción audiovisual.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Vigo",
-      "addressRegion": "Galicia",
-      "addressCountry": "ES"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+34692231872",
-      "contactType": "customer service",
-      "availableLanguage": ["Spanish", "Portuguese", "English"]
-    },
-    "sameAs": [
-      "https://www.instagram.com/listoaqui.media"
-    ]
-  }
-  </script>
+        .tagline {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-  <!-- FIM da alteração -->
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Tamanho responsivo */
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        h1 .highlight {
+            color: var(--brand-color); /* Destacando o problema */
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        /* ====================================================
+           BOTÕES E CTAs (Call to Action)
+           ==================================================== */
+        .actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-color);
+            color: #fff;
+            padding: 18px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: transform 0.2s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            animation: pulse 2s infinite; /* Gatilho visual */
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            color: var(--brand-color);
+        }
+
+        /* Animação de Pulso para o botão principal */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 87, 34, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+        }
+
+        /* ====================================================
+           PROVAS SOCIAIS E ESCASSEZ
+           ==================================================== */
+        .trust-badges {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.03);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .scarcity {
+            background: rgba(255, 87, 34, 0.1);
+            color: var(--brand-color);
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px dashed var(--brand-color);
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- PRELOADER -->
-    <div id="preloader" role="status" aria-label="Cargando...">
-        <div class="preloader-logo">📸</div>
-        <div class="preloader-bar"><div class="preloader-fill"></div></div>
-    </div>
-
-    <!-- SKIP NAVIGATION -->
-    <a href="#hero" class="skip-link">Saltar al contenido principal</a>
-
-    <!-- Header / Navegación -->
-    <header id="main-header" class="header">
-        <div class="container header-container">
-            <div class="logo">
-                <span class="logo-bold">LISTO<span class="accent">.AQUÍ</span></span> <span class="logo-light">MEDIA</span>
-            </div>
-            <nav class="nav-desktop">
-                <ul class="nav-list">
-                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#packs" class="nav-link">Packs</a></li>
-                    <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
-                    <li><a href="#faq" class="nav-link">FAQ</a></li>
-                    <li><a href="#blog" class="nav-link">Blog</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-primary btn-header" target="_blank">Pide tu Pack</a>
-                <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-menu" id="mobile-menu">
-            <ul class="mobile-nav-list">
-                <li><a href="#servicios" class="mobile-link">Servicios</a></li>
-                <li><a href="#packs" class="mobile-link">Packs</a></li>
-                <li><a href="#como-funciona" class="mobile-link">Cómo Funciona</a></li>
-                <li><a href="#faq" class="mobile-link">FAQ</a></li>
-                <li><a href="#blog" class="mobile-link">Blog</a></li>
-                <li><a href="#contacto" class="mobile-link">Contacto</a></li>
-                <li><a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-primary" target="_blank">Pide tu Pack</a></li>
+    <header>
+        <div class="logo">LISTO.AQUÍ MEDIA</div>
+        <nav>
+            <ul>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Packs</a></li>
+                <li><a href="#">Cómo Funciona</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
-        </div>
+        </nav>
+        <!-- Botão sutil no menu, o foco real está no meio da tela -->
+        <a href="#" class="btn-secondary" style="font-size: 0.9rem;">Pide tu Pack</a>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-container">
-        <div class="hero-content">
-            <span class="tag fade-up">🎬 Creadores de contenido para restaurantes en Vigo</span>
-            <h1 class="hero-title fade-up" style="animation-delay:0.1s">Tu comida es increíble.<br>El problema es que <span class="highlight">nadie lo sabe.</span></h1>
-            <p class="hero-subtitle fade-up" style="animation-delay:0.2s">Creamos el contenido que hace que la gente pare de hacer scroll, se le haga agua la boca y reserve mesa en tu restaurante. Sin que tú pierdas un solo minuto de tu cocina.</p>
-            <div class="hero-btns fade-up" style="animation-delay:0.3s">
-                <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-primary btn-lg" target="_blank">Quiero llenar mi restaurante →</a>
-                <a href="#como-funciona" class="btn btn-outline btn-lg">Ver cómo funciona ↓</a>
+        <section class="hero">
+            <span class="tagline">🎬 Creadores de contenido para restaurantes en Vigo</span>
+            
+            <h1>Tu comida es increíble.<br>
+            <span class="highlight">El problema es que nadie lo sabe.</span></h1>
+            
+            <p class="hero-desc">Creamos el contenido que hace que la gente pare de hacer scroll, se le haga agua la boca y reserve mesa en tu restaurante. Sin que tú pierdas un solo minuto de tu cocina.</p>
+            
+            <div class="actions">
+                <a href="#" class="btn-primary">Quiero llenar mi restaurante &rarr;</a>
+                <a href="#" class="btn-secondary">Ver cómo funciona &darr;</a>
             </div>
-            <div class="hero-features fade-up" style="animation-delay:0.4s">
+
+            <div class="trust-badges">
                 <span>✅ Sin contratos largos</span>
-                <span>·</span>
-                <span>🎥 Vamos a tu restaurante</span>
-                <span>·</span>
+                <span>📸 Vamos a tu restaurante</span>
                 <span>⚡ Contenido en 48h</span>
             </div>
-        </div>
-    </div>
-    <div class="scroll-indicator">
-        <div class="mouse"><div class="wheel"></div></div>
-        <div class="arrow"><span></span><span></span></div>
-    </div>
-</section>
-<!-- ============================================ -->
-<!-- SECÇÃO: PROGRAMA FUNDADORES DE VIGO -->
-<!-- ============================================ -->
-<section class="founders-program" id="fundadores">
-  <div class="founders-container">
-    
-    <!-- Badge de alerta no topo -->
-    <div class="founders-badge">
-      <span class="badge-pulse"></span>
-      <span>🔥 Oferta de lanzamiento · Solo para los primeros 3 restaurantes de Vigo</span>
-    </div>
 
-    <!-- Título principal -->
-    <h2 class="founders-title">
-      Conviértete en <span class="highlight-gold">Fundador</span><br>
-      y ahorra <span class="highlight-pink">miles de euros</span> para siempre
-    </h2>
-
-    <!-- Subtítulo explicativo -->
-    <p class="founders-subtitle">
-      Estamos eligiendo <strong>3 restaurantes en Vigo</strong> para grabar nuestro primer portfolio. 
-      A cambio, te damos condiciones que <strong>nunca más volveremos a ofrecer</strong>.
-    </p>
-
-    <!-- Card principal da oferta -->
-    <div class="founders-card">
-      
-      <!-- Header do card -->
-      <div class="card-header">
-        <div class="card-header-left">
-          <span class="card-label">PROGRAMA FUNDADORES</span>
-          <h3 class="card-title">Todo esto, sin pagar un céntimo por adelantado</h3>
-        </div>
-        <div class="card-header-right">
-          <div class="spots-counter">
-            <span class="spots-number">3</span>
-            <span class="spots-label">plazas<br>disponibles</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Divisória -->
-      <div class="card-divider"></div>
-
-      <!-- Grid de benefícios -->
-      <div class="benefits-grid">
-        
-        <!-- Benefício 1 -->
-        <div class="benefit-item">
-          <div class="benefit-icon">🎬</div>
-          <div class="benefit-content">
-            <h4>1 día completo de grabación GRATIS</h4>
-            <p>Vamos a tu restaurante, grabamos todo el día. Sin compromiso, sin contrato previo.</p>
-          </div>
-        </div>
-
-        <!-- Benefício 2 -->
-        <div class="benefit-item">
-          <div class="benefit-icon">📦</div>
-          <div class="benefit-content">
-            <h4>3 Reels + 10 Fotos profesionales</h4>
-            <p>Contenido editado y listo para publicar. <strong>Te lo quedas aunque no sigas con nosotros.</strong></p>
-          </div>
-        </div>
-
-        <!-- Benefício 3 -->
-        <div class="benefit-item">
-          <div class="benefit-icon">💰</div>
-          <div class="benefit-content">
-            <h4>50% OFF los primeros 3 meses</h4>
-            <p>Si te encanta el resultado, pagas solo <strong>197€/mes</strong> en vez de 497€. Testea sin riesgo.</p>
-          </div>
-        </div>
-
-        <!-- Benefício 4 -->
-        <div class="benefit-item">
-          <div class="benefit-icon">♾️</div>
-          <div class="benefit-content">
-            <h4>40% OFF vitalicio para siempre</h4>
-            <p>Tu precio de fundador <strong>nunca sube</strong>. 297€/mes mientras trabajemos juntos.</p>
-          </div>
-        </div>
-
-        <!-- Benefício 5 -->
-        <div class="benefit-item">
-          <div class="benefit-icon">⚡</div>
-          <div class="benefit-content">
-            <h4>Prioridad total en agenda</h4>
-            <p>Como fundador, siempre eres atendido primero. Urgencias cubiertas en 24h.</p>
-          </div>
-        </div>
-
-        <!-- Benefício 6 -->
-        <div class="benefit-item">
-          <div class="benefit-icon">🎁</div>
-          <div class="benefit-content">
-            <h4>Bono: Estrategia de contenido incluida</h4>
-            <p>Te enseñamos <strong>qué publicar y cuándo</strong> para maximizar reservas. Valor: 300€.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Caixa de comparação de preços -->
-      <div class="price-comparison">
-        <div class="price-box price-regular">
-          <span class="price-label">Precio normal</span>
-          <span class="price-value">497€<small>/mes</small></span>
-        </div>
-        <div class="price-arrow">→</div>
-        <div class="price-box price-founder">
-          <span class="price-label">Precio Fundador</span>
-          <span class="price-value">197€<small>/mes</small></span>
-          <span class="price-save">Ahorras 300€/mes</span>
-        </div>
-      </div>
-
-      <!-- Garantia / Risco zero -->
-      <div class="risk-free-box">
-        <span class="risk-icon">🛡️</span>
-        <div class="risk-content">
-          <strong>Riesgo cero para ti:</strong>
-          Si después del día de grabación no te encanta el resultado, 
-          <strong>te quedas con el contenido gratis</strong> y nos damos la mano. Así de simple.
-        </div>
-      </div>
-
-      <!-- CTA Principal -->
-      <div class="card-cta">
-        <a href="https://wa.me/34692231872?text=Hola!%20Quiero%20ser%20uno%20de%20los%203%20restaurantes%20Fundadores%20de%20Vigo%20🔥" 
-           class="cta-founders" 
-           target="_blank" 
-           rel="noopener">
-          Quiero ser Fundador →
-        </a>
-        <p class="cta-subtext">
-          ⏰ Solo 3 plazas · Cuando se acaben, el programa cierra definitivamente
-        </p>
-      </div>
-
-    </div>
-
-    <!-- Nota final de urgência -->
-    <p class="founders-urgency">
-      💡 <strong>¿Por qué hacemos esto?</strong> Somos nuevos en Vigo y queremos construir nuestro portfolio 
-      con los mejores restaurantes de la ciudad. Estos 3 espacios son nuestra inversión en el futuro. 
-      Después, volvemos al precio normal. <strong>Sin excepciones.</strong>
-    </p>
-
-  </div>
-</section>
-
-
-        <!-- Sección: Problema -->
-        <section id="problema" class="problema">
-            <div class="container">
-                <div class="section-header animate-in">
-                    <span class="section-tag">😤 ¿Te suena esto?</span>
-                    <h2 class="section-title">Cocinas como un crack, pero tus mesas siguen vacías entre semana</h2>
-                    <p class="section-subtitle">La mayoría de restaurantes tienen el mismo problema. Y no es falta de calidad — es falta de visibilidad.</p>
-                </div>
-                <div class="problema-cards">
-                    <div class="problema-card animate-in">
-                        <div class="card-icon">📱</div>
-                        <h3 class="card-title">Publicas sin estrategia</h3>
-                        <p class="card-text">Subes fotos cuando te acuerdas, sin un plan. Resultado: 47 likes de tu madre y tus camareros.</p>
-                    </div>
-                    <div class="problema-card animate-in" style="transition-delay:0.1s">
-                        <div class="card-icon">⏰</div>
-                        <h3 class="card-title">No tienes tiempo para redes</h3>
-                        <p class="card-text">Estás entre fogones 12 horas al día. ¿Quién tiene tiempo para grabar reels, editar y escribir captions?</p>
-                    </div>
-                    <div class="problema-card animate-in" style="transition-delay:0.2s">
-                        <div class="card-icon">💸</div>
-                        <h3 class="card-title">Cada mesa vacía te cuesta dinero</h3>
-                        <p class="card-text">Mientras tu competencia llena el local con vídeos virales, tú sigues esperando que el boca a boca funcione.</p>
-                    </div>
-                    <div class="problema-card animate-in" style="transition-delay:0.3s">
-                        <div class="card-icon">🤷</div>
-                        <h3 class="card-title">Contrataste a alguien y no funcionó</h3>
-                        <p class="card-text">Agencias que no entienden hostelería. Community managers que nunca pisaron una cocina. Dinero tirado.</p>
-                    </div>
-                </div>
-                <div class="problema-cta animate-in">
-                    <p class="cta-text">No es que tu restaurante sea malo. Es que nadie está contando tu historia como se merece.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección: Solución -->
-        <section id="solucion" class="solucion">
-            <div class="container">
-                <div class="section-header light animate-in">
-                    <span class="section-tag accent">✨ Aquí es donde entramos nosotros</span>
-                    <h2 class="section-title light">Convertimos tu restaurante en el sitio donde <span class="highlight">todo el mundo quiere ir</span></h2>
-                    <p class="section-subtitle light">Somos creadores de contenido especializados SOLO en hostelería. Vamos a tu restaurante, grabamos contenido que da hambre y lo convertimos en una máquina de atraer clientes.</p>
-                </div>
-                <div class="solucion-grid animate-in">
-                    <div class="solucion-benefits">
-                        <div class="benefit-item"><span class="benefit-check">🎥</span><p><strong>Contenido que da hambre:</strong> Vídeos y fotos profesionales que hacen que la gente no pueda dejar de mirar.</p></div>
-                        <div class="benefit-item"><span class="benefit-check">📈</span><p><strong>Estrategia que llena mesas:</strong> No publicamos por publicar. Cada pieza tiene un objetivo: que alguien reserve.</p></div>
-                        <div class="benefit-item"><span class="benefit-check">🤝</span><p><strong>Tú cocinas, nosotros grabamos:</strong> Vamos a tu local, grabamos en 2 horas y tú sigues con lo tuyo.</p></div>
-                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Tú solo publicas y recibes clientes</p></div>
-                        
-                    </div>
-                    <div class="solucion-image">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop" 
-         alt="Plato de comida profesional fotografiado para restaurante" 
-         class="solucion-img" 
-         loading="lazy" decoding="async" width="800" height="400">
-                    </div>
-                </div>
-                <div class="solucion-cta animate-in">
-                    <a href="#packs" class="btn btn-primary btn-lg">Quiero ver los packs</a>
-                </div>
-                <!-- 
-============================================
-PROVA SOCIAL - DESATIVADA TEMPORARIAMENTE
-Motivo: Aguardar testemunhos dos 3 Fundadores
-Reativar quando: Tivermos os primeiros 3 clientes
-Data de desativação: 21/04/2026
-============================================
-
-                <div class="social-proof animate-in">
-                    <div class="proof-item"><span class="proof-number">+500</span><p>📸 fotos entregadas</p></div>
-                    <div class="proof-item"><span class="proof-number">+200</span><p>🎬 vídeos editados</p></div>
-                    <div class="proof-item"><span class="proof-number">4.9</span><p>⭐ valoración media</p></div>
-                </div>
-                <p class="proof-disclaimer animate-in">Datos de nuestros primeros meses en activo</p>
-                -->
-            </div>
-        </section>
-
-        <!-- Sección: Packs y Precios -->
-        <!-- Sección: Packs y Precios -->
-<section id="packs" class="packs">
-    <div class="container">
-        <div class="section-header animate-in">
-            <span class="section-tag">💰 Planes claros, sin sorpresas</span>
-            <h2 class="section-title">Elige el plan que mejor se adapta a tu restaurante</h2>
-            <p class="section-subtitle">Sin permanencias. Sin contratos raros. Si no te gusta, lo dejas.</p>
-        </div>
-        <div class="packs-grid">
-            <!-- PACK CRECIMIENTO (MÁS POPULAR) -->
-            <div class="pack-card pack-simple pack-featured animate-in">
-                <div class="pack-badge badge-popular">⭐ MÁS POPULAR</div>
-                <h3 class="pack-name">Pack Crecimiento</h3>
-                <div class="pack-price">
-                    <span class="price-amount">497€<small style="font-size:1rem;color:var(--light-muted);font-weight:500">/mes</small></span>
-                    <p class="price-note">mensual · sin permanencia</p>
-                </div>
-                <div class="pack-divider"></div>
-                <p class="pack-highlight" style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:12px"><em>Para crecer en serio</em></p>
-                <ul class="pack-features">
-                    <li><span class="check">✓</span> 2 sesiones de grabación al mes</li>
-                    <li><span class="check">✓</span> 12 vídeos cortos (Reels/TikTok)</li>
-                    <li><span class="check">✓</span> 10 fotos profesionales</li>
-                    <li><span class="check">✓</span> Calendario editorial mensual</li>
-                    <li><span class="check">✓</span> Estrategia de hashtags y horarios</li>
-                    <li><span class="check">✓</span> Copywriting para captions</li>
-                    <li><span class="check">✓</span> 2 revisiones por pieza</li>
-                </ul>
-                <div class="pack-divider"></div>
-                <p class="pack-highlight"><em>Ideal para restaurantes que quieren presencia constante en redes.</em></p>
-                <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Me%20interesa%20el%20Pack%20Crecimiento%20(497%E2%82%AC%2Fmes).%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-primary pack-btn" target="_blank">Quiero crecer →</a>
-            </div>
-
-            <!-- PACK RESTAURANTE LLENO -->
-            <div class="pack-card pack-semanal animate-in" style="transition-delay:0.1s">
-                <div class="pack-badge">🏆 EL ARSENAL COMPLETO</div>
-                <h3 class="pack-name">Pack Restaurante Lleno</h3>
-                <div class="pack-price">
-                    <span class="price-amount">997€<small style="font-size:1rem;color:var(--light-muted);font-weight:500">/mes</small></span>
-                    <p class="price-note">mensual · sin permanencia</p>
-                </div>
-                <div class="pack-divider"></div>
-                <p class="pack-highlight" style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:12px"><em>Para dominar tu zona</em></p>
-                <ul class="pack-features">
-                    <li><span class="check">✓</span> 4 sesiones de grabación al mes</li>
-                    <li><span class="check">✓</span> 20+ vídeos cortos</li>
-                    <li><span class="check">✓</span> 15 fotos profesionales</li>
-                    <li><span class="check">✓</span> Gestión completa de 1 red social</li>
-                    <li><span class="check">✓</span> Estrategia mensual personalizada</li>
-                    <li><span class="check">✓</span> Copywriting para todas las publicaciones</li>
-                    <li><span class="check">✓</span> Análisis de métricas mensual</li>
-                    <li><span class="check">✓</span> Soporte prioritario por WhatsApp</li>
-                    <li><span class="check">✓</span> Revisiones ilimitadas</li>
-                </ul>
-                <div class="pack-divider"></div>
-                <p class="pack-highlight"><em>Ideal para restaurantes que quieren dominar su zona.</em></p>
-                <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20el%20Pack%20Restaurante%20Lleno%20(997%E2%82%AC%2Fmes).%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-primary pack-btn" target="_blank">Quiero el pack completo →</a>
-            </div>
-        </div>
-        <div class="packs-helper animate-in">
-            <p class="helper-text">🤔 ¿No sabes cuál elegir? Escríbenos por WhatsApp y te ayudamos a elegir el plan perfecto para tu restaurante.</p>
-            <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20No%20s%C3%A9%20qu%C3%A9%20plan%20me%20conviene%20para%20mi%20restaurante.%20%C2%BFMe%20ayud%C3%A1is%3F" class="btn btn-helper" target="_blank">Hablar por WhatsApp</a>
-        </div>
-        <div class="trust-badges animate-in">
-            <div class="trust-item"><span class="trust-icon">🔒</span><p>Sin contratos ni permanencia</p></div>
-            <div class="trust-item"><span class="trust-icon">⚡</span><p>Entrega en 48h o menos</p></div>
-            <div class="trust-item"><span class="trust-icon">💬</span><p>Atención directa por WhatsApp</p></div>
-        </div>
-    </div>
-</section>
-
-
-        <!-- Sección: Cómo Funciona -->
-        <section id="como-funciona" class="como-funciona">
-            <div class="container">
-                <div class="section-header animate-in">
-                    <span class="section-tag">🔄 Tan fácil como 1, 2, 3</span>
-                    <h2 class="section-title">De mesa vacía a lista de espera en 3 pasos</h2>
-                    <p class="section-subtitle">Sin reuniones eternas, sin briefings complicados, sin esperas de semanas.</p>
-                </div>
-                <div class="timeline-container">
-                    <div class="timeline-line" id="timeline-line"></div>
-                    <div class="timeline-steps">
-                        <div class="timeline-step animate-in">
-                            <div class="step-circle step-1"><span class="step-number">01</span></div>
-                            <div class="step-icon">💬</div>
-                            <div class="step-card">
-                                <h3 class="step-title">1. Nos escribes</h3>
-                                <p class="step-description">Cuéntanos sobre tu restaurante por WhatsApp. En 24h te respondemos con un plan personalizado. Sin compromiso.</p>
-                                <p class="step-time">⏱ Tiempo: 2 minutos</p>
-                            </div>
-                        </div>
-                        <div class="timeline-step animate-in" style="transition-delay:0.15s">
-                            <div class="step-circle step-2"><span class="step-number">02</span></div>
-                            <div class="step-icon">🎬</div>
-                            <div class="step-card">
-                                <h3 class="step-title">2. Grabamos en tu local</h3>
-                                <p class="step-description">Vamos a tu restaurante con todo el equipo. En 2 horas grabamos contenido para semanas. Tú solo tienes que cocinar como siempre.</p>
-                                <p class="step-time">⏱ Tiempo de sesión: 2 horas</p>
-                            </div>
-                        </div>
-                        <div class="timeline-step animate-in" style="transition-delay:0.3s">
-                            <div class="step-circle step-3"><span class="step-number">03</span></div>
-                            <div class="step-icon">🚀</div>
-                            <div class="step-card">
-                                <h3 class="step-title">3. Tu restaurante se llena</h3>
-                                <p class="step-description">Editamos, optimizamos y publicamos. Tú ves cómo las reservas empiezan a subir. Y nosotros también sonreímos.</p>
-                                <p class="step-time">⏱ Entrega: 1-2 días laborables</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-cta animate-in">
-                    <p class="cta-text" style="margin-bottom:24px; color:rgba(255,255,255,0.7);">Empezar es gratis. Solo escríbenos.</p>
-                    <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-primary btn-lg btn-cta" target="_blank">Empezar ahora — es gratis hablar →</a>
-                    <p class="cta-micro">Respondemos en menos de 2 horas 💬</p>
-                </div>
-            </div>
-        </section>
-          
-        <!-- Sección: FAQ -->
-        <section id="faq" class="faq">
-            <div class="container">
-                <div class="section-header animate-in">
-                    <span class="section-tag">❓ Preguntas frecuentes</span>
-                    <h2 class="section-title">Todo lo que necesitas saber antes de empezar</h2>
-                    <p class="section-subtitle">Y si no encuentras tu respuesta, escríbenos. Respondemos en menos de 2 horas.</p>
-                </div>
-                <div class="faq-grid">
-                    <div class="faq-column" id="faq-column-left">
-                        <div class="accordion-item open">
-                            <button class="accordion-header"><span class="accordion-title">¿Tengo que hacer algo durante la grabación?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Nada. Bueno, sí: cocinar como siempre. Nosotros nos encargamos de todo. Llegamos, montamos, grabamos y nos vamos. Tú no pierdes ni un servicio.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿En cuánto tiempo veo resultados?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Normalmente, desde la primera semana de publicación empiezas a notar más interacción y visibilidad. Los resultados en reservas suelen llegar entre la semana 2 y 4, dependiendo de tu zona.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Y si no me gusta el contenido?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Todos los packs incluyen revisiones. Si algo no te convence, lo ajustamos hasta que estés 100% satisfecho. Nunca publicamos nada sin tu aprobación.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Puedo cancelar cuando quiera?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Sí. No hay permanencias ni contratos de larga duración. Si no estás contento, lo dejas. Así de simple. (Pero spoiler: no vas a querer dejarlo.)</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Solo trabajáis en Vigo?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Estamos basados en Vigo, pero trabajamos en toda Galicia. Si tu restaurante está en Pontevedra, Ourense, Santiago o A Coruña, también llegamos.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Qué necesito tener antes de empezar?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Solo un restaurante con buena comida y ganas de llenarlo. Del resto nos encargamos nosotros. Si no tienes redes sociales, también te ayudamos a crearlas.</p></div>
-                        </div>
-                    </div>
-                    <div class="faq-column" id="faq-column-right">
-                        <div class="accordion-item open">
-    <button class="accordion-header"><span class="accordion-title">¿Por qué los precios son más altos que otras agencias?</span><span class="accordion-icon">+</span></button>
-    <div class="accordion-content"><p>Porque NO somos una agencia genérica. Somos especialistas SOLO en restaurantes. Nuestro contenido está diseñado para una sola cosa: <strong>llenar tus mesas</strong>. Mientras otros te cobran 200€ por publicar fotos genéricas, nosotros te entregamos una estrategia completa que se paga sola con 2-3 reservas extra al mes. Calidad premium, resultados reales.</p></div>
-</div>
-
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Hay algún contrato o permanencia?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>No. Cero contratos, cero permanencia, cero letra pequeña. Cada pack se paga de forma individual. Si te gusta, repites. Si no, tan amigos. Así de simple.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Cómo se paga?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>Aceptamos Bizum, transferencia bancaria y efectivo. El pago se realiza una vez agendada la sesión. Sin sorpresas, sin costes ocultos.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Puedo elegir la música de los vídeos?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>¡Claro! Usamos música libre de derechos optimizada para Reels e TikTok, pero si tienes preferencias, nos lo dices y lo adaptamos. También podemos usar trending audios si prefieres.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿Hacéis gestión de redes sociales?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>El Pack Restaurante Lleno incluye gestión completa de 1 red social. Los demás packs se centran en producción de contenido: grabación, edición y entrega. En todos los casos, te entregamos todo tan bien organizado que publicar te llevará 2 minutos.</p></div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header"><span class="accordion-title">¿En cuánto tiempo recibo el contenido?</span><span class="accordion-icon">+</span></button>
-                            <div class="accordion-content"><p>En 24-48 horas laborables para todos los packs. El Pack Crecimiento tiene entrega en 48 horas laborables. Grabamos, editamos y te enviamos todo por Google Drive o WeTransfer. Listo para publicar directamente.</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-doubt-badge animate-in">
-                    <h3>¿Tienes alguna duda que no está aquí?</h3>
-                    <p>Escríbenos y te la resolvemos en menos de 2 horas. Sin compromiso.</p>
-                    <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Tengo%20una%20pregunta%20sobre%20el%20servicio.%20%C2%BFMe%20ayud%C3%A1is%3F" class="btn btn-primary" target="_blank">Preguntar por WhatsApp</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección: CTA Final -->
-        <section id="cta-final" class="cta-final">
-            <div class="cta-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-            <div class="container cta-final-content">
-                <div class="cta-emoji">🎬</div>
-                <h2 class="cta-title">Tu competencia ya está creando contenido.<br><span class="highlight">¿Vas a quedarte mirando?</span></h2>
-                <p class="cta-subtitle">Cada día sin contenido profesional es un día que pierdes clientes. La buena noticia: empezar es gratis. Escríbenos y en 24 horas tienes un plan para llenar tu restaurante.</p>
-                <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="btn btn-cta-final" target="_blank">Quiero empezar hoy — Escríbenos →</a>
-                <p class="cta-micro-text">💬 Respondemos en menos de 2 horas · Sin compromiso</p>
-                <div class="cta-trust-row">
-    <span>🔒 Sin contratos</span><span>·</span>
-    <span>⚡ Entrega en 48h</span><span>·</span>
-    <span>💬 Atención directa</span><span>·</span>
-    <span>👑 Calidad premium</span>
-</div>
-
-                <!-- INÍCIO da alteração: rebranding footer tagline -->
-                <p class="cta-final-tagline">— LISTO.AQUÍ MEDIA · Contenido profesional, hecho en tu barrio.</p>
-                <!-- FIM da alteração -->
-            </div>
-        </section>
-
-        <!-- Sección: Blog -->
-        <section id="blog" class="blog">
-            <div class="container">
-                <div class="section-header animate-in">
-                    <span class="section-tag">Blog · Consejos para tu negocio</span>
-                    <h2 class="section-title">Ideas para hacer crecer tu negocio local</h2>
-                    <p class="section-subtitle">Consejos rápidos de marketing digital para negocios de Vigo. Gratis, sin humo, directo al grano.</p>
-                </div>
-                <!-- INÍCIO da alteração: rebranding blog intro -->
-                <p class="blog-intro-text">En Listo.Aquí Media ayudamos a negocios locales de Vigo a crear contenido profesional: vídeos para restaurantes, reels para tiendas, fotos para barberías y mucho más. Somos tu creador de contenido en Vigo, especializado en marketing digital para negocios locales.</p>
-                <!-- FIM da alteração -->
-                <div class="blog-grid">
-                    <article class="blog-card animate-in">
-                        <div class="blog-image" style="background:linear-gradient(135deg,#E94560 0%,#0F3460 100%)">
-                            <div class="blog-icon">📱</div>
-                            <span class="blog-category">Redes Sociales</span>
-                        </div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">5 errores que tu restaurante comete en Instagram (y cómo solucionarlos)</h3>
-                            <p class="blog-excerpt">El 73% de los restaurantes publican sin estrategia. Descubre los errores más comunes y cómo convertir tu perfil en una máquina de atraer clientes.</p>
-                            <div class="blog-divider"></div>
-                            <div class="blog-footer">
-                                <a href="#" class="blog-link">Leer más →</a>
-                                <span class="blog-time">⏱ 4 min de lectura</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="blog-card animate-in" style="transition-delay:0.1s">
-                        <div class="blog-image" style="background:linear-gradient(135deg,#0F3460 0%,#1A1A2E 100%)">
-                            <div class="blog-icon">🎬</div>
-                            <span class="blog-category" style="background-color:#0F3460">Contenido Visual</span>
-                        </div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Por qué los vídeos cortos llenan más mesas que la publicidad tradicional</h3>
-                            <p class="blog-excerpt">Un reel bien hecho genera más reservas que un anuncio en el periódico. Te explicamos por qué y cómo aprovecharlo.</p>
-                            <div class="blog-divider"></div>
-                            <div class="blog-footer">
-                                <a href="#" class="blog-link">Leer más →</a>
-                                <span class="blog-time">⏱ 3 min de lectura</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="blog-card animate-in" style="transition-delay:0.2s">
-                        <div class="blog-image" style="background:linear-gradient(135deg,#1A1A2E 0%,#E94560 100%)">
-                            <div class="blog-icon">🏆</div>
-                            <span class="blog-category" style="background-color:#1A1A2E">Casos de Éxito</span>
-                        </div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Caso real: cómo un restaurante en Vigo duplicó sus reservas en 30 días</h3>
-                            <p class="blog-excerpt">Sin pagar publicidad. Solo con contenido orgánico bien hecho. Esta es la historia de cómo lo conseguimos.</p>
-                            <div class="blog-divider"></div>
-                            <div class="blog-footer">
-                                <a href="#" class="blog-link">Leer más →</a>
-                                <span class="blog-time">⏱ 5 min de lectura</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+            <div class="scarcity">
+                🔥 Oferta de lanzamiento · Solo para los primeros 3 restaurantes de Vigo
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer id="contacto" class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <span class="footer-logo-text">LISTO<span class="accent">.AQUÍ</span></span>
-                    <span class="footer-logo-media">MEDIA</span>
-                </div>
-                <p class="footer-tagline">Contenido profesional para restaurantes y negocios locales en Vigo</p>
-                <div class="footer-socials">
-                    <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="social-link" title="WhatsApp" target="_blank">💬</a>
-                    <!-- INÍCIO da alteração: e-mail mantido temporariamente, ver observações -->
-                    <a href="mailto:feitoaquimedia@gmail.com" class="social-link" title="Email" target="_blank">✉️</a>
-                </div>
-                <p class="footer-tagline" style="margin-top:12px;font-size:0.85rem">📍 Vigo, Galicia &nbsp;|&nbsp; 📧 feitoaquimedia@gmail.com</p>
-                <!-- FIM da alteração -->
-            </div>
-
-            <div class="footer-column">
-                <h4 class="footer-title">Servicios</h4>
-                <ul class="footer-links">
-                    <li><a href="#fundadores">🏆 Programa Fundadores</a></li>
-                    <li><a href="#packs">Pack Crecimiento</a></li>
-                    <li><a href="#packs">Pack Restaurante Lleno</a></li>
-                    <li><a href="#packs">Todos los planes</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4 class="footer-title">Empresa</h4>
-                <ul class="footer-links">
-                    <li><a href="#hero">Sobre nosotros</a></li>
-                    <li><a href="#como-funciona">Cómo funciona</a></li>
-                    <li><a href="#faq">Preguntas frecuentes</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4 class="footer-title">Contacto</h4>
-                <div class="footer-contact">
-                    <p>📍 Vigo, Galicia</p>
-                    <p><a href="tel:+34692231872">📱 +34 692 231 872</a></p>
-                    <!-- INÍCIO da alteração -->
-                    <p><a href="mailto:feitoaquimedia@gmail.com">✉️ feitoaquimedia@gmail.com</a></p>
-                    <!-- FIM da alteração -->
-                    <p>🕒 Lunes a Viernes: 9:00 - 19:00</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p class="footer-copyright">© <span class="footer-year"></span> Listo.Aquí Media. Todos los derechos reservados.</p>
-            <p class="footer-credit">Hecho con <a href="https://wa.me/34692231872?text=Vi%20el%20easter%20egg%20%F0%9F%98%84" class="easter-egg">❤️</a> en Vigo</p>
-        </div>
-    </div>
-</footer>
-    <!-- WhatsApp flotante -->
-    <a href="https://wa.me/34692231872?text=Hola%20%F0%9F%91%8B%20Quiero%20llenar%20mi%20restaurante%20de%20clientes.%20%C2%BFMe%20cuentas%20c%C3%B3mo%3F" class="whatsapp-btn" id="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l6.29-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="white"/>
-            <path d="M16.5 14.5c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.57-.49-.5-.67-.5-.17 0-.37-.02-.57-.02s-.52.07-.8.37c-.27.3-1.04 1.02-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.22 5.1 4.5.71.31 1.27.5 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/>
-        </svg>
-        <div class="whatsapp-notification">1</div>
-        <div class="whatsapp-tooltip">¿Hablamos? 💬</div>
-    </a>
-
-    <!-- Scroll to top -->
-    <button id="scroll-to-top" class="scroll-to-top" aria-label="Volver al inicio">↑</button>
-
-    <script>
-        // ========================================
-        // HEADER SCROLL
-        // ========================================
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 40);
-        }, { passive: true });
-
-        // ========================================
-        // MOBILE MENU
-        // ========================================
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('open');
-        });
-        document.querySelectorAll('.mobile-link, .mobile-nav-list .btn').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.classList.remove('active');
-                mobileMenu.classList.remove('open');
-            });
-        });
-
-        // ========================================
-        // ACCORDION / FAQ
-        // ========================================
-        document.querySelectorAll('.accordion-header').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.closest('.accordion-item');
-                const isOpen = item.classList.contains('open');
-                // Close siblings in same column
-                const column = item.closest('.faq-column');
-                if (column) {
-                    column.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('open'));
-                }
-                if (!isOpen) item.classList.add('open');
-            });
-        });
-
-                // ========================================
-        // TESTIMONIALS CAROUSEL — DESATIVADO
-        // Reativar quando tivermos testemunhos dos Fundadores
-        // ========================================
-
-        // ========================================
-        // SCROLL-TO-TOP (threshold: 600px)
-        // ========================================
-        const scrollTopBtn = document.getElementById('scroll-to-top');
-        window.addEventListener('scroll', () => {
-            scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
-        }, { passive: true });
-        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // ========================================
-        // WHATSAPP — ENTRADA RETARDADA (3s)
-        // ========================================
-        const waBtn = document.getElementById('whatsapp-btn');
-        setTimeout(() => { waBtn.classList.add('wa-visible'); }, 3000);
-
-        // ========================================
-        // WHATSAPP — TOOLTIP AUTO NO SCROLL (1x)
-        // ========================================
-        const waTooltip = waBtn.querySelector('.whatsapp-tooltip');
-        let tooltipShown = false;
-        window.addEventListener('scroll', () => {
-            if (tooltipShown) return;
-            const scrolled = window.scrollY + window.innerHeight;
-            const total = document.documentElement.scrollHeight;
-            if (scrolled >= total * 0.67) {
-                tooltipShown = true;
-                waTooltip.classList.add('tooltip-auto');
-                setTimeout(() => waTooltip.classList.remove('tooltip-auto'), 4000);
-            }
-        }, { passive: true });
-
-        // ========================================
-        // INTERSECTION OBSERVER (scroll animations)
-        // ========================================
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-
-        // ========================================
-        // PRELOADER
-        // ========================================
-        const preloader = document.getElementById('preloader');
-        function hidePreloader() {
-            preloader.classList.add('hidden');
-        }
-        window.addEventListener('load', hidePreloader);
-        // Failsafe: esconde em 2s mesmo sem load
-        setTimeout(hidePreloader, 2000);
-
-        // ========================================
-        // ANO DINÂMICO NO FOOTER
-        // ========================================
-        const yearEl = document.querySelector('.footer-year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-        // ========================================
-        // HAMBURGER — ARIA-EXPANDED
-        // ========================================
-        hamburgerBtn.addEventListener('click', () => {
-            const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
-            hamburgerBtn.setAttribute('aria-expanded', String(!expanded));
-        });
-        document.querySelectorAll('.mobile-link, .mobile-nav-list .btn').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // ========================================
-        // COUNT-UP ANIMAÇÃO (números de prova)
-        // ========================================
-        function animateCountUp(el, target, suffix, duration) {
-            const start = performance.now();
-            const isDecimal = String(target).includes('.');
-            function update(now) {
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const current = isDecimal
-                    ? (eased * target).toFixed(1)
-                    : Math.floor(eased * target);
-                el.textContent = suffix + current;
-                if (progress < 1) requestAnimationFrame(update);
-            }
-            requestAnimationFrame(update);
-        }
-
-        const countObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const raw = el.dataset.count;
-                const suffix = el.dataset.suffix || '';
-                if (!raw) return;
-                animateCountUp(el, parseFloat(raw), suffix, 2000);
-                countObserver.unobserve(el);
-            });
-        }, { threshold: 0.5 });
-
-        // Associa os dados de countUp aos elementos existentes
-        const proofNumbers = document.querySelectorAll('.proof-number');
-        const proofData = [
-            { count: '500', suffix: '+' },
-            { count: '200', suffix: '+' },
-            { count: '4.9', suffix: '' },
-        ];
-        proofNumbers.forEach((el, i) => {
-            if (proofData[i]) {
-                el.dataset.count = proofData[i].count;
-                el.dataset.suffix = proofData[i].suffix;
-                countObserver.observe(el);
-            }
-        });
-    </script>
 </body>
 </html>
