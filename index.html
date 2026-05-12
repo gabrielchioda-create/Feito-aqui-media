@@ -18,7 +18,6 @@
 }
 
 /* Reset */
-
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +27,6 @@
 }
 
 /* Corpo */
-
 body {
   background-color: var(--bg-dark);
   color: var(--text-light);
@@ -36,14 +34,12 @@ body {
 }
 
 /* Fundo animado discreto */
-
 .fundo-animado {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: -2;
   background: radial-gradient(circle at 50% 0%, rgba(255,87,34,0.1) 0%, transparent 50%);
-  /* Pequena animação de leve movimento */
   animation: movimentoFundo 30s ease-in-out infinite alternate;
 }
 @keyframes movimentoFundo {
@@ -52,7 +48,6 @@ body {
 }
 
 /* Vinheta sutil (overlay escuro) */
-
 .overlay-vinheta {
   position: fixed;
   top: 0; left: 0;
@@ -65,7 +60,6 @@ body {
 }
 
 /* Header */
-
 header {
   position: fixed;
   top: 0; left: 0;
@@ -96,7 +90,6 @@ nav a {
 nav a:hover { color: var(--primary); }
 
 /* Botões de ação */
-
 .btn {
   display: inline-block;
   padding: 16px 32px;
@@ -112,6 +105,7 @@ nav a:hover { color: var(--primary); }
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+  text-align: center;
 }
 .btn:hover {
   transform: translateY(-2px);
@@ -119,8 +113,7 @@ nav a:hover { color: var(--primary); }
   background: var(--primary-hover);
 }
 
-/* Hero com máscara de vinheta ajustada e esmaecida */
-
+/* Hero com máscara de vinheta ajustada */
 section.hero {
   height: 100vh;
   display: flex;
@@ -128,7 +121,6 @@ section.hero {
   align-items: center;
   padding: 0 20px;
   position: relative;
-  /* Gradiente linear adicionado sobre a imagem para criar o efeito esmaecido e reduzir a poluição visual */
   background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
 }
 section.hero::after {
@@ -136,14 +128,12 @@ section.hero::after {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  /* Foco central levemente mais opaco para garantir a legibilidade absoluta do texto */
   background: radial-gradient(circle at 50% 50%, rgba(7,7,7,0.4) 0%, rgba(7,7,7,0.95) 100%);
   pointer-events: none;
   z-index: 1;
 }
 
 /* Conteúdo da Hero */
-
 .hero-content {
   max-width: 800px;
   z-index: 2;
@@ -157,8 +147,6 @@ section.hero::after {
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* Títulos, textos */
 
 h1 {
   font-size: 4rem;
@@ -180,7 +168,6 @@ p {
 }
 
 /* Seções e Cards */
-
 .section-title {
   text-align: center;
   font-size: 2.5rem;
@@ -192,6 +179,7 @@ section:not(.hero) {
   padding: 100px 5%;
   position: relative;
   z-index: 5;
+  scroll-margin-top: 120px; /* Garante que o header não cubra os títulos ao rolar no menu */
 }
 
 .grid {
@@ -289,7 +277,6 @@ section:not(.hero) {
 }
 
 /* Rodapé */
-
 footer {
   padding: 30px 5%;
   text-align: center;
@@ -299,8 +286,6 @@ footer {
   color: #999;
   margin-top: 60px;
 }
-
-/* Animações de elementos na rolagem */
 
 .reveal {
   opacity: 0;
@@ -312,24 +297,45 @@ footer {
   transform: translateY(0);
 }
 
-/* Responsividade */
-
+/* Responsividade Corrigida de forma inteligente */
 @media(max-width: 768px){
-  h1 { font-size: 2.5rem; }
-  nav { display: none; }
+  h1 { font-size: 2.2rem; } /* Leve ajuste para telas pequenas */
+  
+  header {
+    flex-wrap: wrap; /* Permite que os itens quebrem linha */
+    padding: 15px 5%;
+  }
+  
+  /* Menu não é mais invisível! Ele se reorganiza na linha de baixo de forma elegante */
+  nav {
+    order: 3; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 12px;
+  }
+  nav a {
+    margin-left: 0;
+    font-size: 0.85rem;
+  }
+  
+  /* Ajuste no botão para não espremer a logo no celular */
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
 }
-
 </style>
 </head>
 <body>
 
-<!-- Fundo com elementos de luzes sutis -->
+<!-- Fundo animado -->
 <div class="fundo-animado"></div>
 <div class="overlay-vinheta"></div>
 
-<!-- Cabeçalho/FONTE FIXADA -->
+<!-- Cabeçalho FIXADO -->
 <header id="header">
-  <!-- ALTERADO: Tagline adicionada no logo (Bloco 1) -->
   <a class="logo" href="#">Listo.<span>aqui</span>
     <small style="display:block; font-size:0.45rem; font-weight:300; color:#A1A1A6; letter-spacing:2px; text-transform:uppercase; -webkit-text-fill-color:#A1A1A6;">
     Fotografía · Video · Gastronomía</small>
@@ -339,28 +345,28 @@ footer {
     <a href="#packs">Packs</a>
     <a href="#contacto">Contacto</a>
   </nav>
-  <!-- ALTERADO: Mensagem WA atualizada e target blank (Bloco 3) -->
   <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20acabo%20de%20ver%20vuestra%20web%20y%20quiero%20saber%20c%C3%B3mo%20pod%C3%A9is%20ayudar%20a%20mi%20restaurante.%20%F0%9F%8D%BD%EF%B8%8F" target="_blank">Consulta Gratis</a>
 </header>
 
-<!-- ALTERADO: Barra de credibilidade inserida após o header (Bloco 1) -->
-<div style="margin-top:100px; background:rgba(255,87,34,0.08); border-bottom:1px solid rgba(255,87,34,0.2); padding:12px; text-align:center; font-size:0.85rem; color:#A1A1A6; position:relative; z-index:5;">
-  <span style="color:#F5F5F7;font-weight:700;">Lanzamiento Exclusivo</span>
-  en Galicia &nbsp;·&nbsp;
-  Solo <span style="color:#F5F5F7;font-weight:700;">3 plazas</span> para locales pioneros
-</div>
-
-<!-- Hero com foco na imagem e efeito de vinheta esmaecida -->
+<!-- Hero Section -->
 <section class="hero">
+  
+  <!-- Banner reposicionado de forma absoluta DENTRO da Hero -->
+  <!-- O script no final ajustará a altura (top) dele perfeitamente de acordo com o Header! -->
+  <div id="banner-lanzamiento" style="position: absolute; left: 0; width: 100%; background:rgba(255,87,34,0.08); border-bottom:1px solid rgba(255,87,34,0.2); padding:12px; text-align:center; font-size:0.85rem; color:#A1A1A6; z-index:10; backdrop-filter: blur(4px);">
+    <span style="color:#F5F5F7;font-weight:700;">Lanzamiento Exclusivo</span>
+    en Galicia &nbsp;·&nbsp;
+    Solo <span style="color:#F5F5F7;font-weight:700;">3 plazas</span> para locales pioneros
+  </div>
+
   <div class="hero-content">
     <h1>Tu comida es increíble.<br><span>El problema es que nadie lo sabe.</span></h1>
-    <!-- ALTERADO: Copy do parágrafo da Hero reescrito (Bloco 2) -->
     <p>El 90% de los clientes decide dónde comer antes de salir de casa. ¿Qué ven cuando buscan tu restaurante?</p>
     <a class="btn" href="#packs">Ver Packs</a>
   </div>
 </section>
 
-<!-- ALTERADO: Seção de Dor adicionada ANTES da section como funciona (Bloco 4) -->
+<!-- Restante do conteúdo -->
 <section id="problema">
   <h2 class="section-title reveal">¿Te suena esto?</h2>
   <div class="grid" style="max-width:800px;margin:0 auto;">
@@ -385,32 +391,25 @@ footer {
   </div>
 </section>
 
-<!-- Seção como funciona -->
 <section id="como-funciona">
-  <!-- ALTERADO: Título da seção reescrito (Bloco 2) -->
   <h2 class="section-title reveal">Listo en 72h. Sin cerrar. Sin complicaciones.</h2>
   <div class="grid">
     <div class="card reveal">
       <h3>1. Estrategia</h3>
-      <!-- ALTERADO: Descrição do processo reescrita (Bloco 2) -->
       <p style="color: var(--text-muted)">Analizamos tu carta, tu público y tu competencia. Cada foto tiene un propósito: vender.</p>
     </div>
     <div class="card reveal" style="transition-delay: 0.1s;">
       <h3>2. Producción</h3>
-      <!-- ALTERADO: Descrição do proceso reescrita (Bloco 2) -->
       <p style="color: var(--text-muted)">Llegamos, montamos y rodamos sin interrumpir tu servicio. Luz de cine. Dirección profesional. Resultado brutal.</p>
     </div>
     <div class="card reveal" style="transition-delay: 0.2s;">
       <h3>3. Entrega</h3>
-      <!-- ALTERADO: Descrição do proceso reescrita (Bloco 2) -->
       <p style="color: var(--text-muted)">En 72h recibes todo listo para subir. Tú solo publicas y los clientes empiezan a llegar.</p>
     </div>
   </div>
 </section>
 
-<!-- Packs (Precios) -->
 <section id="packs">
-  <!-- ALTERADO: Título reescrito e subtítulo adicionado (Bloco 2) -->
   <h2 class="section-title reveal">Un pack. Una sesión. Meses de contenido.</h2>
   <p class="reveal" style="text-align:center;color:#A1A1A6;max-width:600px; margin:-30px auto 50px;font-size:1rem;">
     Una sesión genera contenido para <strong style="color:#F5F5F7">3 a 6 meses</strong>. Coste real por publicación: <strong style="color:#FF5722">menos de €10.</strong>
@@ -420,18 +419,15 @@ footer {
     <div class="card reveal">
       <h3>Starter</h3>
       <div class="price">€290<span>/sesión</span></div>
-      <!-- ALTERADO: Features reescritas (Bloco 2) -->
       <ul class="features">
         <li>Sesión de 2h en tu local</li>
         <li>15 Fotos HD para Google, carta y redes</li>
         <li>Retoque profesional — cada plato luce irresistible</li>
         <li>En tus manos en 72h — publica este fin de semana</li>
       </ul>
-      <!-- ALTERADO: Urgência adicionada (Bloco 4) -->
       <p style="color:#FF5722;font-size:0.8rem;font-weight:700; margin-bottom:15px;text-align:center;">
         ⚡ Solo 2 plazas disponibles en mayo
       </p>
-      <!-- ALTERADO: Link WhatsApp atualizado (Bloco 3) -->
       <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20vi%20el%20pack%20Starter%20y%20me%20interesa.%20%C2%BFTodav%C3%ADa%20hay%20disponibilidad%20esta%20semana%3F" target="_blank">Elegir</a>
     </div>
     
@@ -439,7 +435,6 @@ footer {
       <div class="popular-badge">MÁS VENDIDO</div>
       <h3>Growth Visual</h3>
       <div class="price">€490<span>/sesión</span></div>
-      <!-- ALTERADO: Features reescritas (Bloco 2) -->
       <ul class="features">
         <li>Sesión de 4h — cobertura completa</li>
         <li>30 Fotos HD — contenido para 2 meses</li>
@@ -447,36 +442,29 @@ footer {
         <li>Dirección artística — nosotros decidimos qué vende</li>
         <li>Entrega express 48h — antes que tu competencia</li>
       </ul>
-      <!-- ALTERADO: Urgência adicionada (Bloco 4) -->
       <p style="color:#FF5722;font-size:0.8rem;font-weight:700; margin-bottom:15px;text-align:center;">
         ⚡ Solo 2 plazas disponibles en mayo
       </p>
-      <!-- ALTERADO: Link WhatsApp atualizado (Bloco 3) -->
       <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20quiero%20el%20Growth%20Visual.%20%C2%BFCu%C3%A1ndo%20podr%C3%ADamos%20hacer%20la%20sesi%C3%B3n%3F" target="_blank">Elegir Growth</a>
     </div>
     
     <div class="card reveal">
       <h3>Premium / Cadenas</h3>
-      <!-- ALTERADO: Preço e aviso atualizados (Bloco 2) -->
       <div class="price">Desde €990<span>/proyecto</span></div>
       <p style="color:#A1A1A6;font-size:0.85rem;margin-top:-15px; margin-bottom:20px;">Precio final según alcance</p>
-      <!-- ALTERADO: Features reescritas (Bloco 2) -->
       <ul class="features">
         <li>Rodaje de día completo en tu local</li>
         <li>Video cinematográfico — nivel de marca global</li>
         <li>Modelos y actores incluidos</li>
         <li>Derechos totales — tuyo para siempre</li>
       </ul>
-      <!-- ALTERADO: Urgência adicionada (Bloco 4) -->
       <p style="color:#FF5722;font-size:0.8rem;font-weight:700; margin-bottom:15px;text-align:center;">
         ⚡ Solo 2 plazas disponibles en mayo
       </p>
-      <!-- ALTERADO: Link WhatsApp atualizado (Bloco 3) -->
       <a class="btn" href="https://wa.me/34692231872?text=Hola%2C%20tengo%20un%20proyecto%20m%C3%A1s%20grande%20y%20quiero%20hablar%20con%20alguien%20del%20equipo.%20%C2%BFCu%C3%A1ndo%20puedo%20llamar%3F" target="_blank">Hablar con Ventas</a>
     </div>
   </div>
   
-  <!-- ALTERADO: Garantia adicionada ao final da seção packs (Bloco 4) -->
   <div class="reveal" style="text-align:center;margin-top:60px;padding:30px; border:1px solid rgba(255,255,255,0.08);border-radius:20px; max-width:500px;margin-left:auto;margin-right:auto;">
     <div style="font-size:2.5rem;margin-bottom:10px;">🛡️</div>
     <h4 style="margin-bottom:10px;font-size:1.2rem;">Garantía de satisfacción</h4>
@@ -486,7 +474,6 @@ footer {
   </div>
 </section>
 
-<!-- ALTERADO: Seção de FAQ adicionada (Bloco 4) -->
 <section id="faq">
   <h2 class="section-title reveal">Preguntas frecuentes</h2>
   <div style="max-width:700px;margin:0 auto;display:flex; flex-direction:column;gap:15px;">
@@ -505,7 +492,6 @@ footer {
   </div>
 </section>
 
-<!-- ALTERADO: Seção de Contacto substituída pela nova versão (Bloco 4) -->
 <section id="contacto">
   <h2 class="section-title reveal">¿Hablamos?</h2>
   <div style="text-align:center;max-width:600px;margin:0 auto;">
@@ -524,35 +510,43 @@ footer {
   </div>
 </section>
 
-<!-- ALTERADO: Comentário TODO atualizado e posicionado (Bloco 5) -->
-<!-- TODO: Seção de prova social — depoimentos, portfólio e logos de clientes reales. Inserir aqui cuando el contenido esté listo. -->
-
-<!-- ALTERADO: Link WhatsApp flutuante atualizado (Bloco 3) -->
 <a class="float-wa" href="https://wa.me/34692231872?text=%C2%BFTen%C3%A9is%20hueco%20disponible%20este%20mes%3F%20Quiero%20mejorar%20la%20imagen%20de%20mi%20restaurante%20antes%20de%20la%20temporada%20alta.%20%F0%9F%93%85" target="_blank" title="Chatear por WhatsApp">
-  <!-- Ícone SVG do WhatsApp -->
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" viewBox="0 0 16 16">
     <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
   </svg>
 </a>
 
-<!-- Rodapé -->
 <footer>
   Listo.aqui © 2024. Todos los derechos reservados.
 </footer>
 
-<!-- Script para efeitos do site, scroll reveal -->
 <script>
-// ocultar/mostrar menu ao rolar
+// Ocultar/mostrar menu ao rolar
 window.addEventListener('scroll', () => {
   const header = document.getElementById('header');
   if (window.scrollY > 50) {
-    header.style.background = 'rgba(7,7,7,0.9)';
+    header.style.background = 'rgba(7,7,7,0.95)';
     header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
   } else {
     header.style.background = 'rgba(7,7,7,0.6)';
     header.style.boxShadow = 'none';
   }
 });
+
+// NOVO: Cálculo inteligente que posiciona o banner perfeitamente abaixo do Header
+function posicionarBannerDinamicamente() {
+  const header = document.getElementById('header');
+  const banner = document.getElementById('banner-lanzamiento');
+  if (header && banner) {
+    // A propriedade "top" recebe o tamanho exato do header em tempo real
+    banner.style.top = header.offsetHeight + 'px';
+  }
+}
+
+// Escuta quando a página carrega ou quando muda de tamanho (celular rotaciona, pc redimensiona)
+window.addEventListener('load', posicionarBannerDinamicamente);
+window.addEventListener('resize', posicionarBannerDinamicamente);
+posicionarBannerDinamicamente(); // Executa imediatamente
 
 // Scroll reveal
 const elementosRevelar = document.querySelectorAll('.reveal');
@@ -566,7 +560,7 @@ const observer = new IntersectionObserver((entries, obs) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 elementosRevelar.forEach(el => observer.observe(el));
 
-// Parallax leve ao mover o mouse na seção herói
+// Parallax
 const fundoFoco = document.querySelector('.hero');
 if (window.innerWidth > 768) {
   document.addEventListener('mousemove', e => {
