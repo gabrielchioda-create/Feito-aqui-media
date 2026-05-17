@@ -347,8 +347,24 @@ footer {
    ========================================= */
 @media(max-width: 768px){
   section.hero {
-    height: 85svh;
+    height: 100svh; /* Devolvemos o tamanho total da tela */
     min-height: 600px;
+  }
+
+  /* 🎬 TRUQUE CINEMATOGRÁFICO: Enquadramento e Máscara */
+  .video-fundo {
+    min-height: unset; /* Removemos a obrigação de preencher a tela inteira verticalmente */
+    height: 60vh; /* O vídeo fica mais "horizontal", reduzindo drasticamente o zoom */
+    top: 55%; /* Desloca levemente para baixo para fugir do menu */
+    
+    /* Esta máscara dissolve o topo e a base do vídeo, fundindo-os no preto do fundo */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  }
+
+  /* Ajustamos a cortina de sombra para não pesar na máscara */
+  section.hero::after {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
   }
 
   h1 { font-size: 2.2rem; }
@@ -382,6 +398,7 @@ footer {
     padding: 10px 15px;
   }
 }
+
 </style>
 </head>
 <body>
