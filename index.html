@@ -47,7 +47,7 @@ body {
   100% { transform: translate(10px, -10px); }
 }
 
-/* Vinheta sutil (overlay escuro) */
+/* Vinheta sutil */
 .overlay-vinheta {
   position: fixed;
   top: 0; left: 0;
@@ -73,7 +73,7 @@ header {
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; text-decoration: none; color: var(--text-light); }
@@ -113,16 +113,38 @@ nav a:hover { color: var(--primary); }
   background: var(--primary-hover);
 }
 
-/* Hero */
+/* Faixa de Lançamento */
+.banner-promo {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 87, 34, 0.12);
+  border-bottom: 1px solid rgba(255, 87, 34, 0.2);
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #A1A1A6;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  line-height: 1.5;
+}
+.banner-promo strong {
+  color: #F5F5F7;
+  font-weight: 700;
+}
+
+/* Hero Section */
 section.hero {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 20px; /* O padding-top será injetado dinamicamente via JS para evitar sobreposição */
   position: relative;
   overflow: hidden;
   background-color: var(--bg-dark);
+  transition: padding-top 0.2s ease;
 }
 
 /* O VÍDEO DE FUNDO */
@@ -139,7 +161,7 @@ section.hero {
   z-index: 0;
 }
 
-/* ATUALIZAÇÃO: Gradiente mais suave e largo em formato elíptico */
+/* Gradiente Escuro Cinematográfico */
 section.hero::after {
   content: "";
   position: absolute;
@@ -162,7 +184,6 @@ section.hero::after {
   color: var(--text-light);
 }
 
-/* ATUALIZAÇÃO: Uso de filter: drop-shadow para não manchar o texto gradiente */
 .hero-content h1, 
 .hero-content p {
   filter: drop-shadow(0px 6px 15px rgba(0, 0, 0, 0.95));
@@ -321,9 +342,10 @@ footer {
   transform: translateY(0);
 }
 
-/* Responsividade Corrigida */
+/* =========================================
+   RESPONSIVIDADE (Correções Mobile)
+   ========================================= */
 @media(max-width: 768px){
-  /* ATUALIZAÇÃO: Reduzindo altura em telas verticais para não dar super zoom no vídeo */
   section.hero {
     height: 85svh;
     min-height: 600px;
@@ -333,7 +355,7 @@ footer {
   
   header {
     flex-wrap: wrap;
-    padding: 15px 5%;
+    padding: 12px 5%;
   }
   
   nav {
@@ -342,8 +364,9 @@ footer {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 12px;
+    margin-top: 10px;
   }
+  
   nav a {
     margin-left: 0;
     font-size: 0.85rem;
@@ -352,6 +375,11 @@ footer {
   .btn {
     padding: 12px 20px;
     font-size: 0.9rem;
+  }
+
+  .banner-promo {
+    font-size: 0.75rem;
+    padding: 10px 15px;
   }
 }
 </style>
@@ -379,18 +407,18 @@ footer {
 <!-- Hero Section -->
 <section class="hero">
   
-  <!-- VÍDEO DE FUNDO ADICIONADO AQUI -->
+  <!-- VÍDEO DE FUNDO -->
   <video autoplay muted loop playsinline class="video-fundo">
     <source src="video-hanburguer-site.mp4" type="video/mp4" />
   </video>
 
-  <!-- Banner reposicionado de forma absoluta DENTRO da Hero -->
-  <div id="banner-lanzamiento" style="position: absolute; left: 0; width: 100%; background:rgba(255,87,34,0.08); border-bottom:1px solid rgba(255,87,34,0.2); padding:12px; text-align:center; font-size:0.85rem; color:#A1A1A6; z-index:10; backdrop-filter: blur(4px);">
-    <span style="color:#F5F5F7;font-weight:700;">Lanzamiento Exclusivo</span>
-    en Galicia &nbsp;·&nbsp;
-    Solo <span style="color:#F5F5F7;font-weight:700;">3 plazas</span> para locales pioneros
+  <!-- FAIXA DE LANÇAMENTO (Com classe CSS própria) -->
+  <div id="banner-lanzamiento" class="banner-promo">
+    <strong>Lanzamiento Exclusivo</strong> en Galicia &nbsp;·&nbsp;
+    Solo <strong>3 plazas</strong> para locales pioneros
   </div>
 
+  <!-- TEXTOS E BOTÃO -->
   <div class="hero-content">
     <h1>Tu comida es increíble.<br><span>El problema es que nadie lo sabe.</span></h1>
     <p>El 90% de los clientes decide dónde comer antes de salir de casa. ¿Qué ven cuando buscan tu restaurante?</p>
@@ -565,22 +593,41 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Cálculo inteligente que posiciona o banner perfeitamente abaixo do Header
-function posicionarBannerDinamicamente() {
+// NOVO SISTEMA DE POSICIONAMENTO DA FAIXA E PREVENÇÃO DE SOBREPOSIÇÃO
+document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById('header');
   const banner = document.getElementById('banner-lanzamiento');
-  if (header && banner) {
-    banner.style.top = header.offsetHeight + 'px';
-  }
-}
+  const hero = document.querySelector('.hero');
 
-window.addEventListener('load', posicionarBannerDinamicamente);
-window.addEventListener('resize', posicionarBannerDinamicamente);
-posicionarBannerDinamicamente();
+  if (header && banner && hero) {
+    const ajustarEspacos = () => {
+      // 1. Pega as alturas exatas no milissegundo atual
+      const headerHeight = header.offsetHeight;
+      const bannerHeight = banner.offsetHeight;
+      
+      // 2. Gruda a faixa exatamente na base do header
+      banner.style.top = headerHeight + 'px';
+      
+      // 3. Adiciona um "preenchimento" no topo do container de Vídeo (Hero).
+      // Isso empurra a centralização do texto "Tu comida..." para baixo de forma segura,
+      // garantindo que ele NUNCA encoste na faixa ou no header, seja no Desktop ou no Celular.
+      hero.style.paddingTop = (headerHeight + bannerHeight) + 'px';
+    };
+
+    // ResizeObserver é infalível: se o menu no celular quebrar de linha ou a fonte demorar a carregar,
+    // ele detecta a mudança de tamanho na mesma hora e roda a função de ajuste.
+    const observer = new ResizeObserver(ajustarEspacos);
+    observer.observe(header);
+    observer.observe(banner);
+    
+    // Chamada inicial
+    ajustarEspacos();
+  }
+});
 
 // Scroll reveal
 const elementosRevelar = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries, obs) => {
+const observerScroll = new IntersectionObserver((entries, obs) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('active');
@@ -588,7 +635,7 @@ const observer = new IntersectionObserver((entries, obs) => {
     }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-elementosRevelar.forEach(el => observer.observe(el));
+elementosRevelar.forEach(el => observerScroll.observe(el));
 
 // Parallax
 const videoFoco = document.querySelector('.video-fundo');
