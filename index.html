@@ -139,13 +139,13 @@ section.hero {
   z-index: 0;
 }
 
-/* ATUALIZAÇÃO: Gradiente Cinematográfico (Centro escuro, bordas livres) */
+/* ATUALIZAÇÃO: Gradiente mais suave e largo em formato elíptico */
 section.hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.50) 40%, rgba(0, 0, 0, 0.10) 70%, transparent 100%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.20) 80%, transparent 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -162,10 +162,10 @@ section.hero::after {
   color: var(--text-light);
 }
 
-/* ATUALIZAÇÃO: Sombra nos textos para saltarem do fundo */
+/* ATUALIZAÇÃO: Uso de filter: drop-shadow para não manchar o texto gradiente */
 .hero-content h1, 
 .hero-content p {
-  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0px 6px 15px rgba(0, 0, 0, 0.95));
 }
 
 @keyframes fadeInUp {
@@ -323,6 +323,12 @@ footer {
 
 /* Responsividade Corrigida */
 @media(max-width: 768px){
+  /* ATUALIZAÇÃO: Reduzindo altura em telas verticais para não dar super zoom no vídeo */
+  section.hero {
+    height: 85svh;
+    min-height: 600px;
+  }
+
   h1 { font-size: 2.2rem; }
   
   header {
@@ -584,13 +590,12 @@ const observer = new IntersectionObserver((entries, obs) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 elementosRevelar.forEach(el => observer.observe(el));
 
-// ATUALIZAÇÃO DO PARALLAX (Alvo alterado para o vídeo, salvando a faixa de ser cortada!)
+// Parallax
 const videoFoco = document.querySelector('.video-fundo');
 if (window.innerWidth > 768) {
   document.addEventListener('mousemove', e => {
     const x = (window.innerWidth/2 - e.clientX) / 50;
     const y = (window.innerHeight/2 - e.clientY) / 50;
-    // Mantém o translate de -50% original e adiciona o movimento suave
     videoFoco.style.transform = `translate(calc(-50% + ${x*0.5}px), calc(-50% + ${y*0.5}px))`;
   });
   document.addEventListener('mouseleave', () => {
