@@ -113,7 +113,7 @@ nav a:hover { color: var(--primary); }
   background: var(--primary-hover);
 }
 
-/* Hero com máscara de vinheta ajustada */
+/* Hero */
 section.hero {
   height: 100vh;
   display: flex;
@@ -121,8 +121,8 @@ section.hero {
   align-items: center;
   padding: 0 20px;
   position: relative;
-  overflow: hidden; /* IMPORTANTE: Garante que o vídeo não vaze das bordas */
-  background-color: var(--bg-dark); /* Fundo escuro enquanto o vídeo carrega */
+  overflow: hidden;
+  background-color: var(--bg-dark);
 }
 
 /* O VÍDEO DE FUNDO */
@@ -139,22 +139,22 @@ section.hero {
   z-index: 0;
 }
 
-/* O gradiente escuro por cima do vídeo para dar leitura ao texto */
+/* ATUALIZAÇÃO: Gradiente Cinematográfico (Centro escuro, bordas livres) */
 section.hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(7,7,7,0.4) 0%, rgba(7,7,7,0.95) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.50) 40%, rgba(0, 0, 0, 0.10) 70%, transparent 100%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Conteúdo da Hero (mantido o seu original, apenas garantindo o z-index) */
+/* Conteúdo da Hero */
 .hero-content {
   max-width: 800px;
   z-index: 2;
-  position: relative; /* Adicionado para respeitar o z-index sobre o vídeo */
+  position: relative;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
@@ -162,6 +162,11 @@ section.hero::after {
   color: var(--text-light);
 }
 
+/* ATUALIZAÇÃO: Sombra nos textos para saltarem do fundo */
+.hero-content h1, 
+.hero-content p {
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+}
 
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
@@ -198,7 +203,7 @@ section:not(.hero) {
   padding: 100px 5%;
   position: relative;
   z-index: 5;
-  scroll-margin-top: 120px; /* Garante que o header não cubra os títulos ao rolar no menu */
+  scroll-margin-top: 120px;
 }
 
 .grid {
@@ -316,16 +321,15 @@ footer {
   transform: translateY(0);
 }
 
-/* Responsividade Corrigida de forma inteligente */
+/* Responsividade Corrigida */
 @media(max-width: 768px){
-  h1 { font-size: 2.2rem; } /* Leve ajuste para telas pequenas */
+  h1 { font-size: 2.2rem; }
   
   header {
-    flex-wrap: wrap; /* Permite que os itens quebrem linha */
+    flex-wrap: wrap;
     padding: 15px 5%;
   }
   
-  /* Menu não é mais invisível! Ele se reorganiza na linha de baixo de forma elegante */
   nav {
     order: 3; 
     width: 100%;
@@ -339,7 +343,6 @@ footer {
     font-size: 0.85rem;
   }
   
-  /* Ajuste no botão para não espremer a logo no celular */
   .btn {
     padding: 12px 20px;
     font-size: 0.9rem;
@@ -373,8 +376,7 @@ footer {
   <!-- VÍDEO DE FUNDO ADICIONADO AQUI -->
   <video autoplay muted loop playsinline class="video-fundo">
     <source src="video-hanburguer-site.mp4" type="video/mp4" />
-</video>
-
+  </video>
 
   <!-- Banner reposicionado de forma absoluta DENTRO da Hero -->
   <div id="banner-lanzamiento" style="position: absolute; left: 0; width: 100%; background:rgba(255,87,34,0.08); border-bottom:1px solid rgba(255,87,34,0.2); padding:12px; text-align:center; font-size:0.85rem; color:#A1A1A6; z-index:10; backdrop-filter: blur(4px);">
@@ -389,7 +391,6 @@ footer {
     <a class="btn" href="#packs">Ver Packs</a>
   </div>
 </section>
-
 
 <!-- Restante do conteúdo -->
 <section id="problema">
@@ -558,20 +559,18 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// NOVO: Cálculo inteligente que posiciona o banner perfeitamente abaixo do Header
+// Cálculo inteligente que posiciona o banner perfeitamente abaixo do Header
 function posicionarBannerDinamicamente() {
   const header = document.getElementById('header');
   const banner = document.getElementById('banner-lanzamiento');
   if (header && banner) {
-    // A propriedade "top" recebe o tamanho exato do header em tempo real
     banner.style.top = header.offsetHeight + 'px';
   }
 }
 
-// Escuta quando a página carrega ou quando muda de tamanho (celular rotaciona, pc redimensiona)
 window.addEventListener('load', posicionarBannerDinamicamente);
 window.addEventListener('resize', posicionarBannerDinamicamente);
-posicionarBannerDinamicamente(); // Executa imediatamente
+posicionarBannerDinamicamente();
 
 // Scroll reveal
 const elementosRevelar = document.querySelectorAll('.reveal');
@@ -585,16 +584,17 @@ const observer = new IntersectionObserver((entries, obs) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 elementosRevelar.forEach(el => observer.observe(el));
 
-// Parallax
-const fundoFoco = document.querySelector('.hero');
+// ATUALIZAÇÃO DO PARALLAX (Alvo alterado para o vídeo, salvando a faixa de ser cortada!)
+const videoFoco = document.querySelector('.video-fundo');
 if (window.innerWidth > 768) {
   document.addEventListener('mousemove', e => {
     const x = (window.innerWidth/2 - e.clientX) / 50;
     const y = (window.innerHeight/2 - e.clientY) / 50;
-    fundoFoco.style.transform = `translate(${x*0.5}px, ${y*0.5}px)`;
+    // Mantém o translate de -50% original e adiciona o movimento suave
+    videoFoco.style.transform = `translate(calc(-50% + ${x*0.5}px), calc(-50% + ${y*0.5}px))`;
   });
   document.addEventListener('mouseleave', () => {
-    fundoFoco.style.transform = 'translate(0, 0)';
+    videoFoco.style.transform = 'translate(-50%, -50%)';
   });
 }
 </script>
