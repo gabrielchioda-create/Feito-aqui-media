@@ -8,7 +8,7 @@
 <style>
 :root {
   --bg-dark: #070707;
-  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-bg: rgba(255, 255, 255, 0.03);f
   --card-border: rgba(255, 255, 255, 0.08);
   --primary: #FF5722;
   --primary-hover: #F44336;
@@ -312,12 +312,11 @@ section:not(.hero) {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  aspect-ratio: 16/9; /* Proporção perfeita para as imagens */
+  aspect-ratio: 16/9; 
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   border: 1px solid var(--card-border);
-  /* Esta variável controla o corte, inicializada no meio */
   --position: 50%; 
 }
 
@@ -333,18 +332,18 @@ section:not(.hero) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center; /* Garante que as imagens fiquem ancoradas no mesmo ponto */
   display: block;
-  pointer-events: none; /* Impede o drag nativo da imagem */
+  pointer-events: none; 
 }
 
-/* O corte mágico da imagem do ANTES */
+/* O corte mágico: A imagem não muda de tamanho, apenas é mascarada */
 .before-image {
-  width: var(--position);
   z-index: 2;
-  border-right: 2px solid var(--primary);
+  clip-path: polygon(0 0, var(--position) 0, var(--position) 100%, 0 100%);
 }
 
-/* LABELS (Tags de Choque) */
+/* LABELS (Tags Antes e Depois) */
 .label {
   position: absolute;
   top: 30px;
@@ -377,9 +376,9 @@ section:not(.hero) {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0; /* Invisível */
-  cursor: ew-resize; /* Cursor de arrastar */
-  z-index: 4; /* Pega todos os cliques/toques */
+  opacity: 0; 
+  cursor: ew-resize; 
+  z-index: 4; 
   margin: 0;
 }
 
@@ -393,7 +392,7 @@ section:not(.hero) {
   background-color: var(--primary);
   z-index: 3;
   transform: translateX(-50%);
-  pointer-events: none; /* Para não bugar o clique do controle invisível */
+  pointer-events: none; 
 }
 
 .slider-button {
@@ -556,28 +555,26 @@ footer {
 <section id="comprovacao" class="comprovacao">
   <div class="section-title reveal">
     <h2>El cambio que tu cliente <span style="color: var(--primary);">nota al instante</span></h2>
-    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 10px;">Arrastra para ver la diferencia entre un menú invisible y uno que vende solo.</p>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 10px;">Arrastra para ver la diferencia.</p>
   </div>
 
   <div class="image-slider-container reveal">
-    <!-- Imagem do DEPOIS (Premium) - Fica no fundo -->
+    <!-- Imagem do DEPOIS (Fundo) -->
     <div class="image-layer after-image">
-      <!-- Referência exata ao arquivo: "midia depois.png" -->
-      <img src="midia depois.png" alt="Menú Magnético">
-      <span class="label label-after">Menú Magnético</span>
+      <img src="midia depois.png" alt="Menú Depois">
+      <span class="label label-after">Después</span>
     </div>
 
-    <!-- Imagem do ANTES (Amador) - Fica por cima e sofre o corte (clip) -->
+    <!-- Imagem do ANTES (Frente, sofre o corte) -->
     <div class="image-layer before-image">
-      <!-- Referência exata ao arquivo: "midia-antes.png" -->
-      <img src="midia-antes.png" alt="Menú Invisible">
-      <span class="label label-before">Menú Invisible</span>
+      <img src="midia-antes.png" alt="Menú Antes">
+      <span class="label label-before">Antes</span>
     </div>
 
-    <!-- O Controle Deslizante (Invisível, captura o dedo/mouse nativamente) -->
+    <!-- Controle Deslizante -->
     <input type="range" min="0" max="100" value="50" class="slider-control" id="slider-control">
     
-    <!-- Barra divisória central visual -->
+    <!-- Barra divisória -->
     <div class="slider-line">
       <div class="slider-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18-6-6 6-6"/><path d="m15 18 6-6-6-6"/></svg>
@@ -585,6 +582,7 @@ footer {
     </div>
   </div>
 </section>
+
 
 <section id="como-funciona">
   <h2 class="section-title reveal">Listo en 72h. Sin cerrar. Sin complicaciones.</h2>
