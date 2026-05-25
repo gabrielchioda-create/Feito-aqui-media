@@ -724,6 +724,75 @@ footer {
   </div>
 </section>
 
+<!-- ==========================================
+     SEÇÃO AUDITORIA GRATUITA (CAPTURA DE LEAD)
+=========================================== -->
+<section id="auditoria" class="auditoria-section">
+  <div class="auditoria-wrapper">
+    
+    <div class="reveal">
+      <span class="auditoria-badge">🎁 Gratis · Sin compromiso</span>
+      <h2 class="auditoria-titulo">
+        Descubre qué está <span>matando las ventas</span> de tu Instagram
+      </h2>
+      <p class="auditoria-subtitulo">
+        Te grabamos un vídeo de 3 minutos analizando tu perfil y te decimos 
+        <strong style="color: #F5F5F7;">exactamente qué cambiar</strong> para vender más. 
+        Sin venderte nada. Sin letra pequeña.
+      </p>
+    </div>
+
+    <div class="auditoria-beneficios reveal">
+      <div class="beneficio-item">Vídeo personalizado</div>
+      <div class="beneficio-item">Entregado en 48h</div>
+      <div class="beneficio-item">100% gratuito</div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <form class="auditoria-form reveal" id="formAuditoria">
+      
+      <div class="input-group">
+        <label for="instagram">Tu Instagram</label>
+        <input 
+          type="text" 
+          id="instagram" 
+          name="instagram" 
+          placeholder="@turestaurante" 
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="whatsapp">WhatsApp (para enviarte el vídeo)</label>
+        <input 
+          type="tel" 
+          id="whatsapp" 
+          name="whatsapp" 
+          placeholder="+34 600 000 000" 
+          required
+        >
+      </div>
+
+      <button type="submit" class="btn auditoria-btn">
+        Quiero mi auditoría gratis →
+      </button>
+
+      <p class="auditoria-microcopy">
+        ⚡ <strong>Solo 5 auditorías por semana.</strong> Tus datos están seguros.
+      </p>
+    </form>
+
+    <!-- MENSAGEM DE SUCESSO (aparece após envio) -->
+    <div class="form-sucesso" id="formSucesso">
+      <div class="check-icon">✅</div>
+      <h3>¡Recibido!</h3>
+      <p>En las próximas <strong style="color:#FF5722;">48h</strong> recibirás tu auditoría en vídeo por WhatsApp. Revisa tu móvil. 📱</p>
+    </div>
+
+  </div>
+</section>
+
+  
 <section id="como-funciona">
   <h2 class="section-title reveal">Listo en 72h. Sin cerrar. Sin complicaciones.</h2>
   <div class="grid">
@@ -945,6 +1014,39 @@ document.addEventListener('DOMContentLoaded', function() {
     slider.addEventListener('mousemove', moverFantasma);
     slider.addEventListener('touchmove', moverFantasma, { passive: true });
 });
+  // =========================================
+// CAPTURA DE LEAD - FORMULÁRIO AUDITORIA
+// =========================================
+const formAuditoria = document.getElementById('formAuditoria');
+const formSucesso = document.getElementById('formSucesso');
+
+if (formAuditoria) {
+  formAuditoria.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Captura os valores
+    const instagram = document.getElementById('instagram').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    
+    // ⚠️ MODO TEMPORÁRIO: salva no console + redireciona para WhatsApp
+    // No BLOCO 2 vamos conectar ao Web3Forms para receber os leads de verdade
+    console.log('🎯 NOVO LEAD CAPTURADO:', { instagram, whatsapp });
+    
+    // Mostra mensagem de sucesso
+    formAuditoria.style.display = 'none';
+    formSucesso.classList.add('ativo');
+    
+    // BÔNUS ESTRATÉGICO: abre WhatsApp pré-preenchido 
+    // (transforma lead morno em conversa quente na hora)
+    setTimeout(() => {
+      const msg = encodeURIComponent(
+        `Hola! Acabo de pedir mi auditoría gratis para ${instagram}. ¿Cuándo la recibiré? 🙌`
+      );
+      window.open(`https://wa.me/34692231872?text=${msg}`, '_blank');
+    }, 1500);
+  });
+}
+
 </script>
 
 </body>
