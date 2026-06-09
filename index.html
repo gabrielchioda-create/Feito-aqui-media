@@ -127,6 +127,49 @@ nav a:hover { color: var(--primary); }
   background: var(--primary-hover);
 }
 
+/* 🆕 Botão secundário (CTA de aquecimento) */
+.btn-secundario {
+  display: inline-block;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--text-light);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.btn-secundario:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* 🆕 Container dos CTAs do Hero (dual button) */
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+/* 🆕 Micro-prova abaixo dos CTAs */
+.micro-prueba {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.3px;
+  text-align: center;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.9));
+}
+
 /* Faixa de Lançamento */
 .banner-promo {
   position: absolute;
@@ -403,6 +446,22 @@ footer {
   .btn {
     padding: 12px 20px;
     font-size: 0.9rem;
+  }
+  .btn-secundario {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-ctas .btn,
+  .hero-ctas .btn-secundario {
+    width: 100%;
   }
   .banner-promo {
     font-size: 0.75rem;
@@ -695,7 +754,21 @@ footer {
   <div class="hero-content">
     <h1>Tu comida es increíble.<br><span>El problema es que nadie lo sabe.</span></h1>
     <p>El 90% de los clientes decide dónde comer antes de salir de casa. ¿Qué ven cuando buscan tu restaurante?</p>
-    <a class="btn" href="#packs">Ver Packs</a>
+    
+    <!-- 🆕 DUAL CTA: Primário (WhatsApp) + Secundário (Packs) -->
+    <div class="hero-ctas">
+      <a class="btn" href="https://wa.me/34692231872?text=Hola!%20Quiero%20que%20m%C3%A1s%20gente%20conozca%20mi%20restaurante.%20Vi%20que%20ten%C3%A9is%20plazas%20para%20locales%20pioneros%20en%20Galicia%2C%20%C2%BFsigue%20disponible%3F" target="_blank" rel="noopener">
+        Quiero más clientes →
+      </a>
+      <a class="btn-secundario" href="#packs">
+        Ver Packs
+      </a>
+    </div>
+    
+    <!-- 🆕 Micro-prova de baixa fricção -->
+    <p class="micro-prueba">
+      ⚡ Respuesta en menos de 5 minutos · Sin compromiso
+    </p>
   </div>
 </section>
 
@@ -1036,7 +1109,7 @@ if (formAuditoria) {
     formAuditoria.style.display = 'none';
     formSucesso.classList.add('ativo');
     
-    // BÔNUS ESTRATÉGICO: abre WhatsApp pré-preenchido 
+        // BÔNUS ESTRATÉGICO: abre WhatsApp pré-preenchido 
     // (transforma lead morno em conversa quente na hora)
     setTimeout(() => {
       const msg = encodeURIComponent(
@@ -1051,3 +1124,4 @@ if (formAuditoria) {
 
 </body>
 </html>
+
